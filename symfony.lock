@@ -21,7 +21,7 @@
         "version": "1.6.8"
     },
     "doctrine/common": {
-        "version": "3.2.0"
+        "version": "3.2.1"
     },
     "doctrine/dbal": {
         "version": "3.2.0"
@@ -35,7 +35,7 @@
             "repo": "github.com/symfony/recipes",
             "branch": "master",
             "version": "2.4",
-            "ref": "032f52ed50a27762b78ca6a2aaf432958c473553"
+            "ref": "f98f1affe028f8153a459d15f220ada3826b5aa2"
         },
         "files": [
             "config/packages/doctrine.yaml",
@@ -74,7 +74,7 @@
         "version": "3.3.2"
     },
     "doctrine/orm": {
-        "version": "2.10.3"
+        "version": "2.10.4"
     },
     "doctrine/persistence": {
         "version": "2.2.3"
@@ -229,16 +229,16 @@
         "version": "v5.4.0"
     },
     "symfony/browser-kit": {
-        "version": "v5.4.0"
+        "version": "v5.4.2"
     },
     "symfony/cache": {
-        "version": "v5.4.0"
+        "version": "v5.4.2"
     },
     "symfony/cache-contracts": {
         "version": "v2.5.0"
     },
     "symfony/config": {
-        "version": "v5.4.0"
+        "version": "v5.4.2"
     },
     "symfony/console": {
         "version": "5.4",
@@ -253,7 +253,7 @@
         ]
     },
     "symfony/css-selector": {
-        "version": "v5.4.0"
+        "version": "v5.4.2"
     },
     "symfony/debug-bundle": {
         "version": "5.4",
@@ -268,22 +268,22 @@
         ]
     },
     "symfony/dependency-injection": {
-        "version": "v5.4.1"
+        "version": "v5.4.2"
     },
     "symfony/deprecation-contracts": {
         "version": "v2.5.0"
     },
     "symfony/doctrine-bridge": {
-        "version": "v5.4.1"
+        "version": "v5.4.2"
     },
     "symfony/dom-crawler": {
-        "version": "v5.4.0"
+        "version": "v5.4.2"
     },
     "symfony/dotenv": {
-        "version": "v5.4.0"
+        "version": "v5.4.2"
     },
     "symfony/error-handler": {
-        "version": "v5.4.1"
+        "version": "v5.4.2"
     },
     "symfony/event-dispatcher": {
         "version": "v5.4.0"
@@ -298,7 +298,7 @@
         "version": "v5.4.0"
     },
     "symfony/finder": {
-        "version": "v5.4.0"
+        "version": "v5.4.2"
     },
     "symfony/flex": {
         "version": "1.17",
@@ -313,7 +313,7 @@
         ]
     },
     "symfony/form": {
-        "version": "v5.4.0"
+        "version": "v5.4.2"
     },
     "symfony/framework-bundle": {
         "version": "5.4",
@@ -335,19 +335,19 @@
         ]
     },
     "symfony/http-client": {
-        "version": "v5.4.1"
+        "version": "v5.4.2"
     },
     "symfony/http-client-contracts": {
         "version": "v2.5.0"
     },
     "symfony/http-foundation": {
-        "version": "v5.4.1"
+        "version": "v5.4.2"
     },
     "symfony/http-kernel": {
-        "version": "v5.4.1"
+        "version": "v5.4.2"
     },
     "symfony/intl": {
-        "version": "v5.4.0"
+        "version": "v5.4.2"
     },
     "symfony/mailer": {
         "version": "5.4",
@@ -371,7 +371,7 @@
         }
     },
     "symfony/mime": {
-        "version": "v5.4.0"
+        "version": "v5.4.2"
     },
     "symfony/monolog-bridge": {
         "version": "v5.4.0"
@@ -407,7 +407,7 @@
         "version": "v5.4.0"
     },
     "symfony/password-hasher": {
-        "version": "v5.4.0"
+        "version": "v5.4.2"
     },
     "symfony/phpunit-bridge": {
         "version": "6.0",
@@ -449,16 +449,16 @@
         "version": "v1.23.0"
     },
     "symfony/process": {
-        "version": "v5.4.0"
+        "version": "v5.4.2"
     },
     "symfony/property-access": {
-        "version": "v5.4.0"
+        "version": "v5.4.2"
     },
     "symfony/property-info": {
-        "version": "v5.4.0"
+        "version": "v5.4.2"
     },
     "symfony/proxy-manager-bridge": {
-        "version": "v5.4.0"
+        "version": "v5.4.2"
     },
     "symfony/routing": {
         "version": "5.4",
@@ -489,7 +489,7 @@
         ]
     },
     "symfony/security-core": {
-        "version": "v5.4.0"
+        "version": "v5.4.2"
     },
     "symfony/security-csrf": {
         "version": "v5.4.0"
@@ -498,10 +498,10 @@
         "version": "v5.4.0"
     },
     "symfony/security-http": {
-        "version": "v5.4.0"
+        "version": "v5.4.2"
     },
     "symfony/serializer": {
-        "version": "v5.4.0"
+        "version": "v5.4.2"
     },
     "symfony/service-contracts": {
         "version": "v2.5.0"
@@ -510,7 +510,7 @@
         "version": "v5.4.0"
     },
     "symfony/string": {
-        "version": "v5.4.0"
+        "version": "v5.4.2"
     },
     "symfony/translation": {
         "version": "5.4",
@@ -558,10 +558,10 @@
         ]
     },
     "symfony/var-dumper": {
-        "version": "v5.4.1"
+        "version": "v5.4.2"
     },
     "symfony/var-exporter": {
-        "version": "v5.4.0"
+        "version": "v5.4.2"
     },
     "symfony/web-link": {
         "version": "v5.4.0"
@@ -580,17 +580,39 @@
             "config/routes/dev/web_profiler.yaml"
         ]
     },
+    "symfony/webpack-encore-bundle": {
+        "version": "1.13",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "1.9",
+            "ref": "d2d1e09675fff3fa4193aa9950a7c39934524a25"
+        },
+        "files": [
+            "assets/app.js",
+            "assets/bootstrap.js",
+            "assets/controllers.json",
+            "assets/controllers/hello_controller.js",
+            "assets/styles/app.css",
+            "config/packages/assets.yaml",
+            "config/packages/prod/webpack_encore.yaml",
+            "config/packages/test/webpack_encore.yaml",
+            "config/packages/webpack_encore.yaml",
+            "package.json",
+            "webpack.config.js"
+        ]
+    },
     "symfony/yaml": {
-        "version": "v5.4.0"
+        "version": "v5.4.2"
     },
     "theseer/tokenizer": {
         "version": "1.2.1"
     },
     "twig/extra-bundle": {
-        "version": "v3.3.4"
+        "version": "v3.3.6"
     },
     "twig/twig": {
-        "version": "v3.3.4"
+        "version": "v3.3.6"
     },
     "webmozart/assert": {
         "version": "1.10.0"
