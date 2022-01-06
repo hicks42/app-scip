@@ -3,19 +3,36 @@
 namespace App\Controller;
 
 use App\Classe\Cart;
+use App\Entity\Produit;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class CartController extends AbstractController
 {
+    private $em;
+
+    public function __construct(EntityManagerInterface $em)
+    {
+        $this->em = $em;
+    }
+
     /**
      * @Route("/mon-panier", name="cart", methods="GET")
      */
     public function index(Cart $cart): Response
     {
-        // dd($cart->get());
-        return $this->render('cart/index.html.twig', [
+        $cartDetail = [];
+        foreach($cart->get() as $id => $quantity){
+            $cartDetail[] = [
+                'produit' => $this->em->getRepository(Produit::class)->findOneById($id),
+                'quatity' => $quantity,
+            ];
+        }
+
+        // dd($cartDetail);
+        return $this->render('cart/cart.html.twig', [
             'cart' => $cart->get()
         ]);
     }
