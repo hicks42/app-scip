@@ -2,14 +2,22 @@
 
 namespace App\Entity;
 
-use App\Repository\ProduitRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\Traits\Timestampable;
+use App\Repository\ProduitRepository;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ProduitRepository::class)
+ * @ORM\HasLifecycleCallbacks
+ * @Vich\Uploadable
  */
 class Produit
 {
+    use Timestampable;
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -43,11 +51,6 @@ class Produit
     private $thematique;
 
     /**
-     * @ORM\Column(type="datetime_immutable")
-     */
-    private $cretated_at;
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
     private $capitalisation;
@@ -56,6 +59,20 @@ class Produit
      * @ORM\Column(type="integer")
      */
     private $nb_assoc;
+
+    /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     *
+     * @Vich\UploadableField(mapping="subject_image", fileNameProperty="imageName")
+     * @Assert\Image(maxSize="8M", maxSizeMessage="Le fichier est trop gros")
+     * @var File|null
+     */
+    private $imageFile;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $imageName;
 
     public function getId(): ?int
     {
@@ -122,18 +139,6 @@ class Produit
         return $this;
     }
 
-    public function getCretatedAt(): ?\DateTimeImmutable
-    {
-        return $this->cretated_at;
-    }
-
-    public function setCretatedAt(\DateTimeImmutable $cretated_at): self
-    {
-        $this->cretated_at = $cretated_at;
-
-        return $this;
-    }
-
     public function getCapitalisation(): ?string
     {
         return $this->capitalisation;
@@ -156,5 +161,31 @@ class Produit
         $this->nb_assoc = $nb_assoc;
 
         return $this;
+    }
+
+    public function getImageName(): ?string
+    {
+        return $this->imageName;
+    }
+
+    public function setImageName(?string $imageName): self
+    {
+        $this->imageName = $imageName;
+
+        return $this;
+    }
+
+    public function setImageFile(?File $imageFile = null): void
+    {
+        $this->imageFile = $imageFile;
+
+        if (null !== $imageFile) {
+            $this->setUpdatedAt(new \DateTimeImmutable);
+        }
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
     }
 }
