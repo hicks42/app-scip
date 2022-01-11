@@ -51,7 +51,7 @@ class Produit
     private $thematique;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="float", length=255)
      */
     private $capitalisation;
 
@@ -63,7 +63,7 @@ class Produit
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="subject_image", fileNameProperty="imageName")
+     * @Vich\UploadableField(mapping="image_produit", fileNameProperty="imageName")
      * @Assert\Image(maxSize="8M", maxSizeMessage="Le fichier est trop gros")
      * @var File|null
      */
@@ -73,6 +73,11 @@ class Produit
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $imageName;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $slug;
 
     public function getId(): ?int
     {
@@ -139,12 +144,12 @@ class Produit
         return $this;
     }
 
-    public function getCapitalisation(): ?string
+    public function getCapitalisation(): ?float
     {
         return $this->capitalisation;
     }
 
-    public function setCapitalisation(string $capitalisation): self
+    public function setCapitalisation(float $capitalisation): self
     {
         $this->capitalisation = $capitalisation;
 
@@ -187,5 +192,17 @@ class Produit
     public function getImageFile(): ?File
     {
         return $this->imageFile;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(?string $slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
     }
 }

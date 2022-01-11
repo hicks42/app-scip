@@ -17,16 +17,24 @@
 				<div class="col-md-4">
 					<article class="produit-card">
 						<div class="produit-image">
-							<a href=" {{ path('app_produits_show', {slug: produit.slug}) }} "><img src="{{ (produit.imageName ? vich_uploader_asset(produit) : asset('build/images/placeholder.jpg')) | imagine_filter('square_thumbnail_medium') }}" alt="{{ produit.name }}"/></a>
+							<a href=" {{ path('produit_show', {slug: produit.slug}) }} "><img src="{{ (produit.imageName ? vich_uploader_asset(produit) : asset('build/images/placeholder.jpg')) | imagine_filter('square_thumbnail_medium') }}" alt="{{ produit.name }}"/></a>
 						</div>
 						<div class="produit-info">
 							<h2>
-								<a href="{{ path('app_produits_show', {slug: produit.slug}) }}">{{ produit.name }}</a>
+								<a href="{{ path('produit_show', {slug: produit.slug}) }}">{{ produit.name }}</a>
 							</h2>
 							<p class="produit-description">
-								<small>{{ produit.description|u.truncate(25, ' ...', false)|raw }}</small>
+							<ul>
+								<li><small>Gérér par :{{ produit.SocGest|u.truncate(25, ' ...', false)|raw }}</small></li>
+								<li><small>Catégorie :{{ produit.categorie|u.truncate(25, ' ...', false)|raw }}</small></li>
+								<li><small>Capital :{{ produit.capital|u.truncate(25, ' ...', false)|raw }}</small></li>
+								<li><small>thematique :{{ produit.thematique|u.truncate(25, ' ...', false)|raw }}</small></li>
+								<li><small>Date de création :{{ produit.createdAt|raw }}</small></li>
+							</ul>
+
+
 							</p>
-							<p class="produit-price">{{ (produit.price /100)|number_format(2, ',', '.') }}€</p>
+							<p class="produit-price">{{ produit.Capitalisation }} Mds €</p>
 						</div>
 					</article>
 				</div>
