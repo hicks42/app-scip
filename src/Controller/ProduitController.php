@@ -25,4 +25,14 @@ class ProduitController extends AbstractController
         return $this->render('produit/produits.html.twig', compact('produits'),
         );
     }
+    /**
+     * @Route("/produit/{slug}", name="produit_show")
+     */
+    public function show(ProduitRepository $repo, $slug): Response
+    {
+        $produits = $repo->findOneBySlug($slug);
+        return $this->render('produit/produits.html.twig', compact('produits'),
+        );
+    }
+
 }
