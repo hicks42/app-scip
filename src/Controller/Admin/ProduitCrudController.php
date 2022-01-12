@@ -40,9 +40,9 @@ class ProduitCrudController extends AbstractCrudController
             TextField::new('name', 'Nom du produit')
             ->setColumns(2),
             SlugField::new('slug')
-                ->setTargetFieldName('name')
-                ->onlyOnForms()
-                ->setColumns(2),
+            ->setTargetFieldName('name')
+            ->onlyOnForms()
+            ->setColumns(2),
             TextField::new('socGest', 'Société de gestion')
             ->setColumns(2),
             TextField::new('categorie', 'Catégorie')
