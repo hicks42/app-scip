@@ -3,14 +3,21 @@
 {% block title %}Produits{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
 <div class="example-wrapper">
 {% if produits|length > 0 %}
 	<h1 class="text-center">Produits</h1>
+	<div class="row">
+
+		{{ form_start(form) }}
+		<div class="input-group mb-3">
+			{{ form_widget(form.string, {'attr': {'class': 'xxx_class'}}) }}
+			<input class="btn btn-secondary" type="submit" value="Rechercher" formnovalidate>
+		</div>
+		{{ form_end(form) }}
+
+	</div>
+
 	{% for row in produits|batch(3) %}
 		<div class="row mb-5">
 			{% for produit in row %}
