@@ -10,10 +10,11 @@
 	<div class="row">
 
 		{{ form_start(form) }}
-		<div class="input-group mb-3">
-			{{ form_widget(form.string, {'attr': {'class': 'xxx_class'}}) }}
-			<input class="btn btn-secondary" type="submit" value="Rechercher" formnovalidate>
-		</div>
+			<div class="input-group mb-3">
+				{{ form_widget(form.string, {'attr': {'class': 'xxx_class'}}) }}
+				<input class="btn btn-secondary" type="submit" value="Rechercher" formnovalidate>
+			</div>
+			{{ form_widget(form.categorie) }}
 		{{ form_end(form) }}
 
 	</div>
@@ -50,7 +51,7 @@
 {% else %}
 	<p class="h1 mt-5 text-align:center">Pas encore de produit</p>
 	<p class="h4 mt-5 text-center">
-		<a href={{ path ('app_produits_create') }}>Créez le 1er.</a>
+		<a href={{ path ('homepage') }}>Créez le 1er.</a>
 	</p>
 {% endif %}
 

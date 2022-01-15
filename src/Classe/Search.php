@@ -9,9 +9,8 @@ Class Search {
   public $string = '';
 
   /**
-   * @var Category[]
+   * @var Categorie[]
    */
-  public $categories = [];
-
+  public $categorie = [];
 
 }

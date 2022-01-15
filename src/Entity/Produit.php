@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use App\Classe\Search;
+use App\Entity\Categorie;
 use Doctrine\ORM\Mapping as ORM;
 use App\Entity\Traits\Timestampable;
 use App\Repository\ProduitRepository;
@@ -34,11 +36,6 @@ class Produit
      * @ORM\Column(type="string", length=255)
      */
     private $soc_gest;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $categorie;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -79,6 +76,12 @@ class Produit
      */
     private $slug;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=categorie::class, inversedBy="produits")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $categorie;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -104,18 +107,6 @@ class Produit
     public function setSocGest(string $soc_gest): self
     {
         $this->soc_gest = $soc_gest;
-
-        return $this;
-    }
-
-    public function getCategorie(): ?string
-    {
-        return $this->categorie;
-    }
-
-    public function setCategorie(string $categorie): self
-    {
-        $this->categorie = $categorie;
 
         return $this;
     }
@@ -202,6 +193,18 @@ class Produit
     public function setSlug(?string $slug): self
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getCategorie(): ?Categorie
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?Categorie $categorie): self
+    {
+        $this->categorie = $categorie;
 
         return $this;
     }

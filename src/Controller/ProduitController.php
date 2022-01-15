@@ -31,8 +31,8 @@ class ProduitController extends AbstractController
         $form = $this->createForm(SearchType::class, $search);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $search = $form->getData();
-            dd($search);
+            $produits = $this->em->getRepository(Produit::class)->findWithSearch($search);
+            // dd($search);
         }
 
         return $this->render('produit/produits.html.twig', [
