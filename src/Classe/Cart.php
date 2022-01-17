@@ -16,12 +16,13 @@ class Cart
     $cart = $this->session->get('cart', []);
 
     if(!empty($cart[$id]))
-      {
-        $cart[$id]++;
-      } else {
-        $cart[$id] = 1;
-      }
+    {
+      $cart[$id]++;
+    } else {
+      $cart[$id] = 1;
+    }
 
+    // dd($cart); #/works
     $this->session->set('cart', $cart);
   }
 

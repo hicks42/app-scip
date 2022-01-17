@@ -21,35 +21,37 @@ class CartController extends AbstractController
     /**
      * @Route("/mon-panier", name="cart", methods="GET")
      */
-    public function index(Cart $cart): Response
+    public function index(Cart $cart)
     {
         $cartDetail = [];
-        foreach($cart->get() as $id => $quantity){
+// dd($cart);
+        foreach ($cart->get() as $id => $quantity){
             $cartDetail[] = [
                 'produit' => $this->em->getRepository(Produit::class)->findOneById($id),
-                'quatity' => $quantity,
+                'quantity' => $quantity,
             ];
         }
+// dd($cartDetail);
 
-        // dd($cartDetail);
         return $this->render('cart/cart.html.twig', [
-            'cart' => $cart->get()
+            'cart' => $cartDetail
         ]);
     }
 
     /**
      * @Route("/cart/add/{id}", name="add_to_cart")
      */
-    public function add(Cart $cart, $id): Response
+    public function add(Cart $cart, $id)
     {
         $cart->add($id);
+
         return $this->redirectToRoute('cart');
     }
 
     /**
      * @Route("/cart/remove", name="remove_my_cart")
      */
-    public function remove(Cart $cart): Response
+    public function remove(Cart $cart)
     {
         $cart->remove();
         return $this->redirectToRoute('homepage');

@@ -41,7 +41,11 @@
 								<li><small>Capitalisation : {{ produit.Capitalisation }} Mds €</small></li>
 							</ul>
 							</p>
-							<p class="btn btn-secondary w-100">Ajouter au comparateur</p>
+							<p  class="d-flex justify-content-around">
+								<a href="{{ path('add_to_cart', {'id': produit.id}) }}"
+									class="btn btn-secondary w-50">
+									Ajouter au comparateur</a>
+							</p>
 						</div>
 					</article>
 				</div>
@@ -49,9 +53,9 @@
 		</div>
 	{% endfor %}
 {% else %}
-	<p class="h1 mt-5 text-align:center">Pas encore de produit</p>
+	<p class="h1 mt-5 text-align:center">Il n'y a pas de produits correspondant a votre Recherche</p>
 	<p class="h4 mt-5 text-center">
-		<a href={{ path ('homepage') }}>Créez le 1er.</a>
+		<a href={{ path ('homepage') }} class="btn btn-secondary w-50">Retour a la homepage</a>
 	</p>
 {% endif %}
 
