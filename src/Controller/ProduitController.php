@@ -40,6 +40,7 @@ class ProduitController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
     /**
      * @Route("/produit/{slug}", name="produit_show")
      */

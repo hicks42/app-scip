@@ -7,8 +7,19 @@
 <div class="example-wrapper">
 {% if produits|length > 0 %}
 	<h1 class="text-center">Produits</h1>
-	<div class="row">
 
+		<div class="row">
+			<h2>comparateur</h2>
+			<div class="d-flex justify-content-between">
+	{# {% for object in compare %} #}
+				<div class="card col-md-3 mb-3">A</div>
+				<div class="card col-md-3 mb-3">B</div>
+				<div class="card col-md-3 mb-3">C</div>
+	{# {% endfor %} #}
+			</div>
+		</div>
+
+	<div class="row">
 		{{ form_start(form) }}
 			<div class="input-group mb-3">
 				{{ form_widget(form.string, {'attr': {'class': 'xxx_class'}}) }}
@@ -16,7 +27,6 @@
 			</div>
 			{{ form_widget(form.categorie) }}
 		{{ form_end(form) }}
-
 	</div>
 
 	{% for row in produits|batch(3) %}
@@ -42,7 +52,7 @@
 							</ul>
 							</p>
 							<p  class="d-flex justify-content-around">
-								<a href="{{ path('add_to_cart', {'id': produit.id}) }}"
+								<a href="{{ path('add_to_compare', {'id': produit.id}) }}"
 									class="btn btn-secondary w-50">
 									Ajouter au comparateur</a>
 							</p>

@@ -10,6 +10,7 @@
 		<thead class="thead-dark">
 			<tr>
 				<th scope="col">#</th>
+				<th scope="col"></th>
 				<th scope="col">Name</th>
 				<th scope="col" class="text-center">Quantity</th>
 				<th scope="col">Géré par</th>
@@ -20,6 +21,7 @@
 			{% for item in cart %}
 				<tr>
 					<th scope="row">{{loop.index}}</th>
+					<td><img src="{{ (item.produit.imageName ? vich_uploader_asset(item.produit) : asset('build/images/placeholder.jpg')) | imagine_filter('square_thumbnail_vtiny') }}"></td>
 					<td>{{item.produit.name}}</td>
 					<td class="text-center">{{item.quantity}}</td>
 					<td>{{item.produit.SocGest}}</td>
