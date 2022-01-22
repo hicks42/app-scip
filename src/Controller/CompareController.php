@@ -19,17 +19,26 @@ class CompareController extends AbstractController
   }
 
   /**
-   * @Route("/comparateur", name="Compare", methods="GET")
+   * @Route("/comparateur", name="compare", methods="GET")
    */
   public function index(Compare $compare)
   {
+
+    // dd($compare->get() );
+
+    if(!is_null($compare->get())){
+
     $compareDetail = [];
-    // dd($compare);
+
     foreach ($compare->get() as $id) {
       $compareDetail[] = [
         'produit' => $this->em->getRepository(Produit::class)->findOneById($id),
       ];
     }
+    }else{
+      $compareDetail = null;
+    }
+
     // dd($compareDetail);
 
     return $this->render('compare.html.twig', [
@@ -44,6 +53,8 @@ class CompareController extends AbstractController
   {
     $compare->add($id);
 
+    // dd($compare);
+
     return $this->redirectToRoute('compare');
   }
 
@@ -54,6 +65,6 @@ class CompareController extends AbstractController
   {
     $compare->remove();
 
-    return $this->redirectToRoute('homepage');
+    return $this->redirectToRoute('produits');
   }
 }

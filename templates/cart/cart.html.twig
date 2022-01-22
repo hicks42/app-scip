@@ -23,8 +23,15 @@
 					<th scope="row">{{loop.index}}</th>
 					<td><img src="{{ (item.produit.imageName ? vich_uploader_asset(item.produit) : asset('build/images/placeholder.jpg')) | imagine_filter('square_thumbnail_vtiny') }}"></td>
 					<td>{{item.produit.name}}</td>
-					<td class="text-center">{{item.quantity}}</td>
+					<td class="text-center">
+						<a href="{{ path('remove_from_cart')}} "><img src="{{asset('images/minus-sign.png')}}" height="12" alt="moins un"></a>
+						x {{item.quantity}}
+						<a href="{{ path('add_to_cart')}} "><img src="{{asset('images/plus-sign.png')}}" height="12" alt="plus un"></a>
+					</td>
 					<td>{{item.produit.SocGest}}</td>
+					<td>
+						<a href="{{path('remove_from_cart', {'id': item.produit.id})}}"><img src="{{asset('images/trash.png')}}"  height="12" alt="supprimmer"></a>
+					</td>
 				</tr>
 			{% endfor %}
 		</tbody>

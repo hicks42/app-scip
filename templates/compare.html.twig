@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Le comparateur{% endblock %}
+
+{% block body %}
+<h1>Le Comparateur</h1>
+
+{% if compare is null %}
+	<table class="table">
+		<tr>
+			<th>Aucun produit dans le comparateur</th>
+		</tr>
+	</table>
+	{% else %}
+			{# {{ dump (compare[0].produit) }} #}
+			{# {{ dump (compare) }} #}
+		<table class="table">
+			<tr>
+				<th>Info</th>
+				{% for item in compare %}
+					{# {{ dump (item.produit) }} #}
+					{% for column in item.produit.imageName|split('<hr />') %}
+						<td><img src="{{ (column ? vich_uploader_asset(item.produit) : asset('build/images/placeholder.jpg')) | imagine_filter('square_thumbnail_vtiny') }}"></td>
+					{% endfor %}
+				{% endfor %}
+			</tr>
+
+			{{ include('traits/_line.html.twig', {'value': 'id'})}}
+			{{ include('traits/_line.html.twig', {'value': 'name'})}}
+			{{ include('traits/_line.html.twig', {'value': 'SocGest'})}}
+			{{ include('traits/_line.html.twig', {'value': 'categorie'})}}
+			{{ include('traits/_line.html.twig', {'value': 'capital'})}}
+			{{ include('traits/_line.html.twig', {'value': 'thematique'})}}
+			{{ include('traits/_line.html.twig', {'value': 'capitalisation'})}}
+
+		</table>
+	{% endif %}
+	<a href={{ path ('produits') }} class="btn btn-secondary w-50">Retour aux produits</a>
+
+{% endblock %}

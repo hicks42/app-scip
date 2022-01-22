@@ -14,14 +14,15 @@ class Compare
   public function add($id)
   {
     $compare = $this->session->get('compare', []);
+    $size = count((is_countable($compare) ? $compare : []));
 
-    if (!empty($compare[$id])) {
-      $compare[$id];
-    } else {
-      $compare[$id] = 1;
+    if(!in_array($id, $compare)){
+      if($size >2) {
+        array_shift($compare);
+      }
+      $compare[] = $id;
     }
 
-    // dd($compare); #/works
     $this->session->set('compare', $compare);
   }
 

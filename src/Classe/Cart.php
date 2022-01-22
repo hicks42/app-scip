@@ -15,8 +15,7 @@ class Cart
   {
     $cart = $this->session->get('cart', []);
 
-    if(!empty($cart[$id]))
-    {
+    if(!empty($cart[$id]))    {
       $cart[$id]++;
     } else {
       $cart[$id] = 1;
@@ -31,8 +30,17 @@ class Cart
     return $this->session->get('cart');
   }
 
-  public function remove()
+  public function remove($id)
   {
-    $this->session->remove('cart');
+    $cart = $this->session->get('cart', []);
+
+    unset($cart[$id]);
+
+    return $cart;
+  }
+
+  public function delete()
+  {
+    $this->session->delete('cart');
   }
 }
