@@ -19,27 +19,44 @@ class CompareController extends AbstractController
   }
 
   /**
+   * @Route("/comparator/{str}", name="compare_array", methods="GET")
+   */
+  public function view($str)
+  {
+    if (!is_null($str)) {
+      $compareDetail = [];
+      $produitsIds = explode(',', $str);
+      // les compare de la session sont captés par l'ID et stocké ds compareDetail[]
+      foreach ($produitsIds as $id) {
+        $compareDetail[] = [
+          'produit' => $this->em->getRepository(Produit::class)->findOneById($id),
+        ];
+      }
+    } else {
+      $compareDetail = null;
+    }
+    return $this->render('compare.html.twig', [
+      'compare' => $compareDetail
+    ]);
+  }
+
+  /**
    * @Route("/comparateur", name="compare", methods="GET")
    */
   public function index(Compare $compare)
   {
+    if (!is_null($compare->get())) {
 
-    // dd($compare->get() );
-
-    if(!is_null($compare->get())){
-
-    $compareDetail = [];
-
-    foreach ($compare->get() as $id) {
-      $compareDetail[] = [
-        'produit' => $this->em->getRepository(Produit::class)->findOneById($id),
-      ];
-    }
-    }else{
+      $compareDetail = [];
+      // les compare de la session sont captés par l'ID et stocké ds compareDetail[]
+      foreach ($compare->get() as $id) {
+        $compareDetail[] = [
+          'produit' => $this->em->getRepository(Produit::class)->findOneById($id),
+        ];
+      }
+    } else {
       $compareDetail = null;
     }
-
-    // dd($compareDetail);
 
     return $this->render('compare.html.twig', [
       'compare' => $compareDetail
@@ -52,8 +69,6 @@ class CompareController extends AbstractController
   public function add(Compare $compare, $id)
   {
     $compare->add($id);
-
-    // dd($compare);
 
     return $this->redirectToRoute('compare');
   }

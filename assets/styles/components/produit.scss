@@ -10,7 +10,7 @@
 }
 
 .produit-image {
-    max-height: 300px;
+    max-height: 100px;
     border-radius: 5px 5px 0 0;
     overflow: hidden;
     flex-grow: 1;
@@ -94,6 +94,19 @@
     text-decoration: none;
     cursor: pointer;
   }
+
+.recherche {
+    margin: 1rem 0;
+    padding: 1rem 2rem;
+    border: #6c757d solid 1px;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    background: rgb(226, 226, 226);
+}
+
+ul.produit-list li {
+    list-style: none;
+}
 
 @media only screen and ( min-width : 800px ){
     .column {
