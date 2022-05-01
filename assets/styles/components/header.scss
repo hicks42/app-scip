@@ -1,0 +1,141 @@
+.SiteHeader {
+  position: relative;
+  z-index: 5;
+  background: #ffffff;
+}
+
+.HomeHeader{
+  position: relative;
+  z-index: 5;
+  background: #ffffff;
+  min-height: 20vh;
+  padding: 1rem;
+}
+
+.SiteHeader-contact {
+  height: 50px;
+  color: #fff;
+  background: #222222;
+  text-align: center;
+  font-size: 0.77777778em;
+  line-height: 3.57142857em;
+}
+
+.SiteHeader-contact {
+  height: 50px;
+  color: #fff;
+  background: #222222;
+  text-align: center;
+  font-size: 0.77777778em;
+  line-height: 3.57142857em;
+}
+
+.SiteHeader-menu {
+  position: relative;
+  height: 100px;
+  font-size: 0.83333333em;
+  line-height: 6.66666667em;
+}
+
+.SiteHeader-nav {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.SiteHeader-menu li {
+  position: relative;
+  display: inline-block;
+  height: 100%;
+}
+.SiteHeader-menu li a {
+  display: inline-block;
+  height: 100%;
+  margin-left: 20px;
+  color: #999999;
+}
+.SiteHeader .sub-menu {
+  position: absolute;
+  display: none;
+  left: 0;
+  font-size: 1em;
+  line-height: 1.33333333em;
+  background: #fff;
+  width: 250px;
+}
+.SiteHeader .sub-menu a {
+  display: block;
+  padding: 12px 20px;
+  margin-left: 0;
+  height: auto;
+}
+
+.btnMenu {
+  position: absolute;
+  display: block;
+  height: 30px;
+  width: 40px;
+  padding: 10px 0;
+  right: 6%;
+  top: 20px;
+  background: none;
+  border: none;
+}
+
+.promo-card {
+  background-color: rgb(255, 255, 255);
+  box-shadow: 5px 5px 9px -2px #6d6d6d;
+  border: 0px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin: 15px auto;
+}
+
+.promo-image {
+  max-height: 100px;
+  border-radius: 5px 0 0 5px;
+  overflow: hidden;
+  flex-grow: 1;
+  max-width: 100%;
+}
+
+.promo-image img {
+  width: 100%;
+  max-width: 100%;
+  transition: 2s ease-in-out;
+
+  &:hover {
+      transform: scale(1.2);
+  }
+}
+
+.promo-info {
+  margin: 0 3px 0 8px;
+  width: auto;
+  height: fit-content;
+  flex-grow: 2;
+}
+
+.promo-info h1 {
+  margin-top: 15px;
+  font-size: 1rem;
+}
+
+.promo-info h1 > a {
+  color: #6c757d;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.promo-description {
+  width: auto;
+  text-align: justify;
+}
+
+@media (max-width: 1400px){
+  .SiteHeader-menu li a {
+      margin-left: 13px;
+  }
+}

@@ -10,24 +10,24 @@
 			</title>
 			{% block stylesheets %}
 				{{ encore_entry_link_tags('app') }}
+				<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 			{% endblock stylesheets %}
 			{% block javascripts %}
 				{{ encore_entry_script_tags('app') }}
 			{% endblock javascripts %}
 		{% endblock head %}
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 	</head>
-	<body>
-		<div id="bg">
-			{# {{ include('layout/partials/_banner.html.twig') }} #}
-			<main role="main" class="container">
-				<div class="d-flex justify-content-center">
-					{# {{ render(controller('App\\Controller\\NavController::navbar')) }} #}
-				</div>
-				{% block body %}{% endblock body %}
-			</main>
-			{# {{ include('layout/partials/_footer.html.twig') }} #}
-		</div>
-	</body>
-
+	{% block body %}
+		<body>
+			<div class="bg">
+				{{ include('traits/_header.html.twig') }}
+				<main role="main" class="container">
+					{% block content %}{% endblock content %}
+				</main>
+				{# <div class="d-flex justify-content-center"></div> #}
+				{# {{ render(controller('App\\Controller\\NavController::navbar')) }} #}
+				{{ include('traits/_footer.html.twig') }}
+			</div>
+		</body>
+	{% endblock body %}
 </html>
