@@ -82,6 +82,11 @@ class Produit
      */
     private $categorie;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $isPromo = false;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -205,6 +210,18 @@ class Produit
     public function setCategorie(?Categorie $categorie): self
     {
         $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    public function getIsPromo(): ?bool
+    {
+        return $this->isPromo;
+    }
+
+    public function setIsPromo(?bool $isPromo): self
+    {
+        $this->isPromo = $isPromo;
 
         return $this;
     }

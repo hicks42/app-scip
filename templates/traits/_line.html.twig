@@ -1,9 +1,14 @@
 <tr>
 	<th>{{value}}</th>
 	{% for item in compare %}
-	{% set produit = item.produit %}
+		{% set produit = item.produit %}
 		{% for column in attribute(produit, value)|split('<hr />') %}
-			<td>{{ column|raw }}</td>
+			{% if value == 'capitalisation' %}
+				<td>{{ column|raw }}
+					M€</td>
+			{% else %}
+				<td>{{ column|raw }}</td>
+			{% endif %}
 		{% endfor %}
 	{% endfor %}
 </tr>

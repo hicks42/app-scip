@@ -16,6 +16,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
+use phpDocumentor\Reflection\Types\Boolean;
 
 class ProduitCrudController extends AbstractCrudController
 {
@@ -28,40 +30,42 @@ class ProduitCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
+            DateField::new('createdAt', 'Date de  création')
+                ->hideOnIndex()
+                ->setColumns(2),
             DateTimeField::new('updatedAt')
-            ->onlyOnDetail()
-            ->hideOnForm(),
+                ->onlyOnDetail()
+                ->hideOnForm(),
+            BooleanField::new('isPromo', 'En Promotion')
+                ->setColumns(2),
+            FormField::addPanel('Promotion', 'name'),
             FormField::addPanel('Identitée')->collapsible(),
-            ImageField::new('imageName', 'Image')
-            ->setBasePath('images/produits')
-            ->setUploadDir('public/images/produits')
-            ->setRequired(false)
-            ->setUploadedFileNamePattern('[randomhash].[extension]')
-            ->setColumns(12),
             TextField::new('name', 'Nom du produit')
-            ->setColumns(2),
+                ->setColumns(12),
             SlugField::new('slug')
-            ->setTargetFieldName('name')
-            ->onlyOnForms()
-            ->setColumns(2),
+                ->setTargetFieldName('name')
+                ->onlyOnForms()
+                ->setColumns(12),
+            ImageField::new('imageName', 'Image')
+                ->setBasePath('images/produits')
+                ->setUploadDir('public/images/produits')
+                ->setRequired(false)
+                ->setUploadedFileNamePattern('[randomhash].[extension]')
+                ->setColumns(12),
             TextField::new('socGest', 'Société de gestion')
-            ->setColumns(2),
-
+                ->setColumns(11),
             AssociationField::new('categorie', 'Catégorie')
-            ->setColumns(2),
-
+                ->setColumns(11),
             TextField::new('capital', 'Captital')
-            ->setColumns(2),
+                ->setColumns(11),
             TextField::new('thematique', 'Thématique')
-            ->setColumns(2),
-            DateField::new('createdAt')
-            ->hideOnIndex()
-            ->setColumns(2),
+                ->setColumns(11),
             NumberField::new('capitalisation', 'Capitalisation en Mds €')
-            ->setColumns(2),
+                ->setColumns(11),
             IntegerField::new('nbAssoc', 'Nombre d\'associés')
-            ->setColumns(2),
-            FormField::addPanel('Informations')->collapsible(),
+                ->setColumns(11),
+            FormField::addPanel('Informations')
+                ->collapsible(),
         ];
     }
 
@@ -69,9 +73,12 @@ class ProduitCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-
-            ->renderContentMaximized()
-            ;
+            ->overrideTemplate('crud/new', '/bundles/EasyAdminBundle/custom/produit_new.html.twig')
+            ->overrideTemplate('crud/edit', '/bundles/EasyAdminBundle/custom/produit_edit.html.twig')
+            ->setDefaultSort(['id' => 'DESC'])
+            ->showEntityActionsInlined()
+            ->setPaginatorPageSize(10)
+            ->renderContentMaximized();
     }
 
 

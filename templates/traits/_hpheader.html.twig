@@ -15,47 +15,88 @@
 		</a>
 	</div>
 	<div class="HomeHeader">
-		<a href="/" class="SiteHeader-logo">
-			<img src="/images/logo-magnacarta.svg" alt="Logo Magnacarta, gestion en patrimoine">
-		</a>
-		<article class="promo-card">
-			<div class="promo-image">
-				<img src="{{ (promo.imageName ? vich_uploader_asset(promo) : asset('build/images/placeholder.jpg')) | imagine_filter('square_thumbnail_medium') }}" alt="{{ promo.name }}"/><a href=" {{ path('produit_show', {slug: promo.slug}) }} "></a>
-			</div>
-			<div class="produit-info">
-				<h1>
-					<a href="{{ path('produit_show', {slug: promo.slug}) }}">{{ promo.name }}</a>
-				</h1>
-				<p class="produit-description">
-					<ul class="produit-list">
-						<li>
-							<small>Gérér par :
-								{{ promo.socGest|u.truncate(25, ' ...', false)|raw }}</small>
-						</li>
-						<li>
-							<small>Catégorie :
-								{{ promo.categorie|u.truncate(25, ' ...', false)|raw }}</small>
-						</li>
-						<li>
-							<small>Capital :
-								{{ promo.capital|u.truncate(25, ' ...', false)|raw }}</small>
-						</li>
-						<li>
-							<small>Thématique :
-								{{ promo.thematique|u.truncate(25, ' ...', false)|raw }}</small>
-						</li>
-						<li>
-							<small>Date de création :
-								{{ promo.createdAt|date("d/m/Y") }}</small>
-						</li>
-						<li>
-							<small>Capitalisation :
-								{{ promo.Capitalisation }}
-								Mds €</small>
-						</li>
-					</ul>
-				</p>
-			</div>
-		</article>
+		<div class="logo-container">
+			<a href="/" class="SiteHeader-logo">
+				<img src="/images/logo-magnacarta.svg" alt="Logo Magnacarta, gestion en patrimoine">
+			</a>
+		</div>
+		<div class="promo-container">
+			{% if promos is defined %}
+				{% for promo in promos %}
+					<article class="promo-card">
+						<h1>Promotion du jour !!!</h1>
+						<div class="promo-info">
+							<div class="promo-image">
+								<a href=" {{ path('produit_show', {slug: promo.slug}) }} ">
+									<img src="{{ (promo.imageName ? vich_uploader_asset(promo) : asset('build/images/placeholder.jpg')) | imagine_filter('square_thumbnail_medium') }}" alt="{{ promo.name }}"/>
+								</a>
+							</div>
+							<div>
+								<h2>
+									<a href="{{ path('produit_show', {slug: promo.slug}) }}">{{ promo.name }}</a>
+								</h2>
+								<div class="info-container mx-1">
+									<div>
+										<small>Gérér par :</small>
+										{{ promo.socGest|u.truncate(25, ' ...', false)|raw }}
+									</div>
+									<div>
+										<small>Catégorie :</small>
+										{{ promo.categorie|u.truncate(25, ' ...', false)|raw }}
+									</div>
+									<div>
+										<small>Capital :</small>
+										{{ promo.capital|u.truncate(25, ' ...', false)|raw }}
+									</div>
+									<div>
+										<small>Thém. :</small>
+										{{ promo.thematique|u.truncate(25, ' ...', false)|raw }}
+									</div>
+									<div>
+										<small>Date de création :</small>
+										{{ promo.createdAt|date("d/m/Y") }}
+									</div>
+									<div>
+										<small>Capitalisation :</small>
+										{{ promo.Capitalisation }}
+										Mds €
+									</div>
+								</div>
+							</div>
+						</div>
+					</article>
+				{% endfor %}
+			{% endif %}
+		</div>
+		<div class="actu-container">
+			{% if actus is defined %}
+				{% for actu in actus %}
+					<article class="actu-card">
+						<h1>Actualité</h1>
+						<hr>
+						<div
+							class="actu-info">
+							{# <div class="actu-image">
+							<a href=" {{ path('produit_show', {slug: actu.slug}) }} ">
+							<img src="{{ (actu.imageName ? vich_uploader_asset(actu) : asset('build/images/placeholder.jpg')) | imagine_filter('square_thumbnail_medium') }}" alt="{{ actu.name }}"/>
+							</a>
+							</div> #}
+							<div>
+								<h2>
+									{{ actu.title }}
+								</h2>
+								<div class="actu-info mx-1">{{ actu.content|u.truncate(100, ' ...', false)|raw }}
+									<br>
+									<a href="{{ path('actu_show', {slug: actu.slug}) }}">
+										Lire
+									</a>
+								</div>
+							</div>
+						</div>
+					</article>
+				{% endfor %}
+			{% endif %}
+		</div>
+
 	</div>
 </header>

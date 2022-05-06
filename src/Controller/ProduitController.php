@@ -46,10 +46,10 @@ class ProduitController extends AbstractController
      */
     public function show(ProduitRepository $repo, $slug): Response
     {
-        $produits = $repo->findOneBySlug($slug);
+        $produit = $repo->findOneBySlug($slug);
         return $this->render(
-            'produit/produits.html.twig',
-            compact('produits'),
+            'produit/produit_show.html.twig',
+            compact('produit'),
         );
     }
 }

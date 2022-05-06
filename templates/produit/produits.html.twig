@@ -24,11 +24,12 @@
 			<div class="compare-card"></div>
 			<div class="compare-card"></div>
 		</div>
-			<div class="d-flex justify-content-around w-50">
-				{# <a href="{{ path('erase_compare') }}" class="razBtn">RAZ comaparateur</a> #}
-				<button class="btn razBtn">Retirer le dernier</button>
-				<button class="btn compareBtn">Comparer</button>
-			</div>
+		<div
+			class="d-flex justify-content-around w-50">
+			{# <a href="{{ path('erase_compare') }}" class="razBtn">RAZ comaparateur</a> #}
+			<button class="btn razBtn">Retirer le dernier</button>
+			<button class="btn compareBtn">Comparer</button>
+		</div>
 	</div>
 
 	<div class="main-wrapper">
@@ -52,7 +53,9 @@
 						<div class="col-md-4">
 							<article class="produit-card">
 								<div class="produit-image">
-									<img src="{{ (produit.imageName ? vich_uploader_asset(produit) : asset('build/images/placeholder.jpg')) | imagine_filter('square_thumbnail_medium') }}" alt="{{ produit.name }}"/><a href=" {{ path('produit_show', {slug: produit.slug}) }} "></a>
+									<a href=" {{ path('produit_show', {slug: produit.slug}) }} ">
+										<img src="{{ (produit.imageName ? vich_uploader_asset(produit) : asset('build/images/placeholder.jpg')) | imagine_filter('rectangle_thumbnail_medium') }}" alt="{{ produit.name }}"/>
+									</a>
 								</div>
 								<div class="produit-info">
 									<h1>
