@@ -1,5 +1,19 @@
 <tr>
-	<th>{{value}}</th>
+	<th>{{value|trans}}
+		:</th>
+	{% if value == 'performances' %}
+		{% for item in compare %}
+			{% set perfs = attribute(item.produit, value).getValues() %}
+			<td>
+				{% for perf in perfs %}
+					<strong>{{ perf.year|raw }}
+						:</strong>
+					{{ perf.rate|raw }}
+					%</br>
+			{% endfor %}
+		</td>
+	{% endfor %}
+{% else %}
 	{% for item in compare %}
 		{% set produit = item.produit %}
 		{% for column in attribute(produit, value)|split('<hr />') %}
@@ -11,4 +25,4 @@
 			{% endif %}
 		{% endfor %}
 	{% endfor %}
-</tr>
+{% endif %}</tr>

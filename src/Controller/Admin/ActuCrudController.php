@@ -3,6 +3,9 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Actu;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -39,5 +42,21 @@ class ActuCrudController extends AbstractCrudController
                 // ->setFormType(CKEditorType::class)
                 ->setColumns(12),
         ];
+    }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setDefaultSort(['id' => 'DESC'])
+            ->showEntityActionsInlined()
+            ->setPaginatorPageSize(10)
+            ->renderContentMaximized();
+    }
+
+
+    public function configureActions(Actions $actions): Actions
+    {
+        return $actions
+            ->add(Crud::PAGE_INDEX, Action::DETAIL);
     }
 }
