@@ -1,0 +1,7 @@
+easy_admin:
+    entities:
+        Produit:
+            class: App\Entity\Produit
+            label: 'Produits'
+            list:
+                title: "Les plus récents de nos produits"

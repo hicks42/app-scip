@@ -1,0 +1,47 @@
+.hp-card{
+  background-color: rgb(255, 255, 255);
+  box-shadow: 5px 5px 9px -2px #6d6d6d;
+  border: 0px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 3rem;
+  margin: 2rem 0;
+}
+.hp-left {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+}
+
+.hp-right {
+  display: flex;
+  flex-flow: row-reverse ;
+  justify-content: space-between;
+}
+
+.hp-text {
+  width: 70%;
+  text-align: justify;
+}
+
+.hp-link {
+  width: 30%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.hp-button {
+  color: #fff;
+  background-color: #000000;
+  padding: 1rem;
+  font-weight: bold;
+  width: 15rem;
+}
+
+.hp-button:hover {
+  color: rgb(0, 0, 0);
+  background-color: #c52222;
+}

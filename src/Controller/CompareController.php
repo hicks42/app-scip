@@ -35,7 +35,7 @@ class CompareController extends AbstractController
     } else {
       $compareDetail = null;
     }
-    return $this->render('compare.html.twig', [
+    return $this->render('produit/compare.html.twig', [
       'compare' => $compareDetail
     ]);
   }
@@ -58,7 +58,7 @@ class CompareController extends AbstractController
       $compareDetail = null;
     }
 
-    return $this->render('compare.html.twig', [
+    return $this->render('produit/compare.html.twig', [
       'compare' => $compareDetail
     ]);
   }
