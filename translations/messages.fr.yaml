@@ -4,4 +4,34 @@ categorie: Catégorie
 capital: Type de capital
 thematique: Thématique
 capitalisation: Capitalisation
+nbAssoc: Nombre d'associés
 performances: Performances
+
+sharePrice: Prix de la part
+shareNbr: Nombre de parts
+shareSubMin: Minimum de parts à souscrire
+fruitionDelay: Délai de jouissance
+
+withdrawalValue: Valeur de retrait
+immvableNbr: Nombre d'immeubles
+surface: Surface gérée en m²
+tenantNbr: Nombre de locataires
+
+top: TOP
+tof: TOF
+lifeInsuranceAvaible: Disponibilité en assurance-vie
+reserveRan: Réserves et RAN
+worksAdvance: Provisions pour travaux
+
+investStrat: Stratégie d'investissement
+repartSector: Répartition sectorielle
+repartGeo: Répartition géographique
+infoTrim: Informations pertinentes du trimestre
+lifeAssetTrim: Vie des actifs au cours du trimestre
+
+subscriptionCom: Commission de souscription
+ManageCom: Commission de gestion
+arbMovCom: Commission d'arbitrage ou de mouvement
+pilotWorksCom: Commission de suivi de pilotage des travaux
+witCessionCom: Commission de retrait/cession sur le marché secondaire
+shareMutaCom: Commission de cession ou de mutation des parts

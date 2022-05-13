@@ -95,6 +95,126 @@ class Produit
    */
   private $performances;
 
+  /**
+   * @ORM\Column(type="float")
+   */
+  private $sharePrice;
+
+  /**
+   * @ORM\Column(type="integer")
+   */
+  private $shareNbr;
+
+  /**
+   * @ORM\Column(type="integer")
+   */
+  private $shareSubMin;
+
+  /**
+   * @ORM\Column(type="string", length=255)
+   */
+  private $fruitionDelay;
+
+  /**
+   * @ORM\Column(type="float")
+   */
+  private $withdrawalValue;
+
+  /**
+   * @ORM\Column(type="integer")
+   */
+  private $immvableNbr;
+
+  /**
+   * @ORM\Column(type="integer")
+   */
+  private $surface;
+
+  /**
+   * @ORM\Column(type="integer")
+   */
+  private $tenantNbr;
+
+  /**
+   * @ORM\Column(type="integer")
+   */
+  private $top;
+
+  /**
+   * @ORM\Column(type="integer")
+   */
+  private $tof;
+
+  /**
+   * @ORM\Column(type="boolean")
+   */
+  private $lifeInsuranceAvaible;
+
+  /**
+   * @ORM\Column(type="string", length=255)
+   */
+  private $reserveRan;
+
+  /**
+   * @ORM\Column(type="integer")
+   */
+  private $worksAdvance;
+
+  /**
+   * @ORM\Column(type="text")
+   */
+  private $investStrat;
+
+  /**
+   * @ORM\Column(type="string", length=255)
+   */
+  private $repartSector;
+
+  /**
+   * @ORM\Column(type="string", length=255)
+   */
+  private $repartGeo;
+
+  /**
+   * @ORM\Column(type="text")
+   */
+  private $infoTrim;
+
+  /**
+   * @ORM\Column(type="text")
+   */
+  private $lifeAssetTrim;
+
+  /**
+   * @ORM\Column(type="text")
+   */
+  private $subscriptionCom;
+
+  /**
+   * @ORM\Column(type="text")
+   */
+  private $ManageCom;
+
+  /**
+   * @ORM\Column(type="text")
+   */
+  private $arbMovCom;
+
+  /**
+   * @ORM\Column(type="text")
+   */
+  private $pilotWorksCom;
+
+  /**
+   * @ORM\Column(type="text")
+   */
+  private $witCessionCom;
+
+  /**
+   * @ORM\Column(type="text")
+   */
+  private $shareMutaCom;
+
 
   public function __toString()
   {
@@ -273,5 +393,293 @@ class Produit
     }
 
     return $this;
+  }
+
+  public function getSharePrice(): ?float
+  {
+      return $this->sharePrice;
+  }
+
+  public function setSharePrice(float $sharePrice): self
+  {
+      $this->sharePrice = $sharePrice;
+
+      return $this;
+  }
+
+  public function getShareNbr(): ?int
+  {
+      return $this->shareNbr;
+  }
+
+  public function setShareNbr(int $shareNbr): self
+  {
+      $this->shareNbr = $shareNbr;
+
+      return $this;
+  }
+
+  public function getShareSubMin(): ?int
+  {
+      return $this->shareSubMin;
+  }
+
+  public function setShareSubMin(int $shareSubMin): self
+  {
+      $this->shareSubMin = $shareSubMin;
+
+      return $this;
+  }
+
+  public function getFruitionDelay(): ?string
+  {
+      return $this->fruitionDelay;
+  }
+
+  public function setFruitionDelay(string $fruitionDelay): self
+  {
+      $this->fruitionDelay = $fruitionDelay;
+
+      return $this;
+  }
+
+  public function getWithdrawalValue(): ?float
+  {
+      return $this->withdrawalValue;
+  }
+
+  public function setWithdrawalValue(float $withdrawalValue): self
+  {
+      $this->withdrawalValue = $withdrawalValue;
+
+      return $this;
+  }
+
+  public function getImmvableNbr(): ?int
+  {
+      return $this->immvableNbr;
+  }
+
+  public function setImmvableNbr(int $immvableNbr): self
+  {
+      $this->immvableNbr = $immvableNbr;
+
+      return $this;
+  }
+
+  public function getSurface(): ?int
+  {
+      return $this->surface;
+  }
+
+  public function setSurface(int $surface): self
+  {
+      $this->surface = $surface;
+
+      return $this;
+  }
+
+  public function getTenantNbr(): ?int
+  {
+      return $this->tenantNbr;
+  }
+
+  public function setTenantNbr(int $tenantNbr): self
+  {
+      $this->tenantNbr = $tenantNbr;
+
+      return $this;
+  }
+
+  public function getTop(): ?int
+  {
+      return $this->top;
+  }
+
+  public function setTop(int $top): self
+  {
+      $this->top = $top;
+
+      return $this;
+  }
+
+  public function getTof(): ?int
+  {
+      return $this->tof;
+  }
+
+  public function setTof(int $tof): self
+  {
+      $this->tof = $tof;
+
+      return $this;
+  }
+
+  public function getLifeInsuranceAvaible(): ?bool
+  {
+      return $this->lifeInsuranceAvaible;
+  }
+
+  public function setLifeInsuranceAvaible(bool $lifeInsuranceAvaible): self
+  {
+      $this->lifeInsuranceAvaible = $lifeInsuranceAvaible;
+
+      return $this;
+  }
+
+  public function getReserveRan(): ?string
+  {
+      return $this->reserveRan;
+  }
+
+  public function setReserveRan(string $reserveRan): self
+  {
+      $this->reserveRan = $reserveRan;
+
+      return $this;
+  }
+
+  public function getWorksAdvance(): ?int
+  {
+      return $this->worksAdvance;
+  }
+
+  public function setWorksAdvance(int $worksAdvance): self
+  {
+      $this->worksAdvance = $worksAdvance;
+
+      return $this;
+  }
+
+  public function getInvestStrat(): ?string
+  {
+      return $this->investStrat;
+  }
+
+  public function setInvestStrat(string $investStrat): self
+  {
+      $this->investStrat = $investStrat;
+
+      return $this;
+  }
+
+  public function getRepartSector(): ?string
+  {
+      return $this->repartSector;
+  }
+
+  public function setRepartSector(string $repartSector): self
+  {
+      $this->repartSector = $repartSector;
+
+      return $this;
+  }
+
+  public function getRepartGeo(): ?string
+  {
+      return $this->repartGeo;
+  }
+
+  public function setRepartGeo(string $repartGeo): self
+  {
+      $this->repartGeo = $repartGeo;
+
+      return $this;
+  }
+
+  public function getInfoTrim(): ?string
+  {
+      return $this->infoTrim;
+  }
+
+  public function setInfoTrim(string $infoTrim): self
+  {
+      $this->infoTrim = $infoTrim;
+
+      return $this;
+  }
+
+  public function getLifeAssetTrim(): ?string
+  {
+      return $this->lifeAssetTrim;
+  }
+
+  public function setLifeAssetTrim(string $lifeAssetTrim): self
+  {
+      $this->lifeAssetTrim = $lifeAssetTrim;
+
+      return $this;
+  }
+
+  public function getSubscriptionCom(): ?string
+  {
+      return $this->subscriptionCom;
+  }
+
+  public function setSubscriptionCom(string $subscriptionCom): self
+  {
+      $this->subscriptionCom = $subscriptionCom;
+
+      return $this;
+  }
+
+  public function getManageCom(): ?string
+  {
+      return $this->ManageCom;
+  }
+
+  public function setManageCom(string $ManageCom): self
+  {
+      $this->ManageCom = $ManageCom;
+
+      return $this;
+  }
+
+  public function getArbMovCom(): ?string
+  {
+      return $this->arbMovCom;
+  }
+
+  public function setArbMovCom(string $arbMovCom): self
+  {
+      $this->arbMovCom = $arbMovCom;
+
+      return $this;
+  }
+
+  public function getPilotWorksCom(): ?string
+  {
+      return $this->pilotWorksCom;
+  }
+
+  public function setPilotWorksCom(string $pilotWorksCom): self
+  {
+      $this->pilotWorksCom = $pilotWorksCom;
+
+      return $this;
+  }
+
+  public function getWitCessionCom(): ?string
+  {
+      return $this->witCessionCom;
+  }
+
+  public function setWitCessionCom(string $witCessionCom): self
+  {
+      $this->witCessionCom = $witCessionCom;
+
+      return $this;
+  }
+
+  public function getShareMutaCom(): ?string
+  {
+      return $this->shareMutaCom;
+  }
+
+  public function setShareMutaCom(string $shareMutaCom): self
+  {
+      $this->shareMutaCom = $shareMutaCom;
+
+      return $this;
   }
 }

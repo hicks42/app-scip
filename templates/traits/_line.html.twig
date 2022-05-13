@@ -8,9 +8,22 @@
 				{% for perf in perfs %}
 					<strong>{{ perf.year|raw }}
 						:</strong>
-					{{ perf.rate|raw }}
-					%</br>
+					{{ perf.rate|raw }}%</br>
 			{% endfor %}
+		</td>
+	{% endfor %}
+
+{% elseif value == 'lifeInsuranceAvaible' %}
+	{% for item in compare %}
+		{% set lifass = attribute(item.produit, value) %}
+		<td>
+			{% if lifass %}
+				<strong>
+					OUI</strong>
+			{% else %}
+				<strong>
+					NON</strong>
+			{% endif %}
 		</td>
 	{% endfor %}
 {% else %}

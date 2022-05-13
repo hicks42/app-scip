@@ -19,9 +19,11 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 
 class ProduitCrudController extends AbstractCrudController
 {
@@ -40,17 +42,19 @@ class ProduitCrudController extends AbstractCrudController
             DateTimeField::new('updatedAt', 'Date de Màj')
                 ->onlyOnDetail()
                 ->hideOnForm(),
+
+            FormField::addPanel('Identitée')->collapsible(),
             BooleanField::new('isPromo', 'En Promotion')
                 ->setColumns(2),
+
             FormField::addPanel('Promotion', 'name'),
-            FormField::addPanel('Identitée')->collapsible(),
             TextField::new('name', 'Nom du produit')
                 ->setColumns(12),
             SlugField::new('slug')
                 ->setTargetFieldName('name')
                 ->onlyOnForms()
                 ->setColumns(12),
-            ImageField::new('imageName', 'Image')
+            ImageField::new('imageName', 'Logo')
                 ->setBasePath('images/produits')
                 ->setUploadDir('public/images/produits')
                 ->setRequired(false)
@@ -63,13 +67,14 @@ class ProduitCrudController extends AbstractCrudController
             TextField::new('capital', 'Captital')
                 ->setColumns(11),
             TextField::new('thematique', 'Thématique')
+                ->hideOnIndex()
                 ->setColumns(11),
             NumberField::new('capitalisation', 'Capitalisation en Mds €')
+                ->hideOnIndex()
                 ->setColumns(11),
             IntegerField::new('nbAssoc', 'Nombre d\'associés')
+                ->hideOnIndex()
                 ->setColumns(11),
-            FormField::addPanel('Informations')
-                ->collapsible(),
             CollectionField::new('performances', 'Performances')
                 ->setEntryType(PerformanceType::class)
                 ->setFormTypeOption('by_reference', false)
@@ -79,8 +84,88 @@ class ProduitCrudController extends AbstractCrudController
                 ->setColumns(12),
             CollectionField::new('performances', 'Performances')
                 // ->setTemplatePath('admin/fields/performance.html.twig')
+                ->hideOnIndex()
                 ->onlyOnDetail()
                 // ->renderExpanded()
+                ->setColumns(12),
+
+            FormField::addPanel('CHIFFRES CLES')->collapsible(),
+            MoneyField::new('sharePrice', 'Prix de la part')
+                ->setCurrency('EUR')
+                ->hideOnIndex()
+                ->setColumns(11),
+            NumberField::new('shareNbr', 'Nombre de parts')
+                ->hideOnIndex()
+                ->setColumns(11),
+            NumberField::new('shareSubMin', 'Minimum de parts à souscrire')
+                ->hideOnIndex()
+                ->setColumns(11),
+            TextField::new('fruitionDelay', 'Délai de jouissance')
+                ->hideOnIndex()
+                ->setColumns(11),
+            NumberField::new('withdrawalValue', 'Valeur de retrait')
+                ->hideOnIndex()
+                ->setColumns(11),
+            NumberField::new('immvableNbr', 'Nombre d\'immeubles')
+                ->hideOnIndex()
+                ->setColumns(11),
+            NumberField::new('surface', 'Surface gérée en m²')
+                ->hideOnIndex()
+                ->setColumns(11),
+            NumberField::new('tenantNbr', 'Nombre de locataires')
+                ->hideOnIndex()
+                ->setColumns(11),
+            NumberField::new('top', 'TOP')
+                ->hideOnIndex()
+                ->setColumns(11),
+            NumberField::new('tof', 'TOF')
+                ->hideOnIndex()
+                ->setColumns(11),
+            BooleanField::new('lifeInsuranceAvaible', 'Disponibilité en assurance-vie')
+                ->hideOnIndex()
+                ->setColumns(11),
+            TextField::new('reserveRan', 'Réserves et RAN')
+                ->hideOnIndex()
+                ->setColumns(11),
+            NumberField::new('worksAdvance', 'Provisions pour travaux')
+                ->hideOnIndex()
+                ->setColumns(11),
+
+            FormField::addPanel('STRATEGIE')->collapsible(),
+            TextareaField::new('investStrat', 'Stratégie d\'investissement')
+                ->hideOnIndex()
+                ->setColumns(12),
+            TextField::new('repartSector', 'Répartition sectorielle')
+                ->hideOnIndex()
+                ->setColumns(12),
+            TextField::new('repartGeo', 'Répartition géographique')
+                ->hideOnIndex()
+                ->setColumns(12),
+            TextareaField::new('infoTrim', 'Informations pertinentes du trimestre')
+                ->hideOnIndex()
+                ->setColumns(12),
+            TextareaField::new('lifeAssetTrim', 'Vie des actifs au cours du trimestre')
+                ->hideOnIndex()
+                ->setColumns(12),
+
+            FormField::addPanel('FRAIS')->collapsible(),
+            TextareaField::new('subscriptionCom', 'Commission de souscription')
+                ->hideOnIndex()
+                ->setColumns(12),
+            TextareaField::new('ManageCom', 'Commission de gestion')
+                ->hideOnIndex()
+                ->setColumns(12),
+            TextareaField::new('arbMovCom', 'Commission d\'arbitrage ou de mouvement')
+                ->hideOnIndex()
+                ->setColumns(12),
+            TextareaField::new('pilotWorksCom', 'Commission de suivi de pilotage des travaux')
+                ->hideOnIndex()
+                ->setColumns(12),
+            TextareaField::new('witCessionCom', 'Commission de retrait/cession sur le marché secondaire')
+                ->hideOnIndex()
+                ->setColumns(12),
+            TextareaField::new('shareMutaCom', 'Commission de cession ou de mutation des parts')
+                ->hideOnIndex()
                 ->setColumns(12),
         ];
     }

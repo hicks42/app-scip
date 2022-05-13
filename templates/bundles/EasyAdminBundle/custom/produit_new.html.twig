@@ -45,33 +45,108 @@
 	{% block main %}
 		{% block new_form %}
 		{{ form_start(new_form) }}
+
+			<h1>
+		{{ new_form.vars.value.name }}
+		</h1>
+			<div>
+			{{ form_start(new_form) }}
 		{{ form_row(new_form.isPromo) }}
-		<hr>
-			<div class="d-flex justify-content-between col-md-6"> <h1>IDENTITE</h1>
+	</div>
+	</hr>
+
+		<div class="d-flex justify-content-between col-md-6"> <h2>IDENTITE</h2>
+	</div>
+	<div class="row justify-content-between flex-nowrap">
+		<div class="col-md-6 border border-light shadow p-3 mb-5 bg-white rounded m-1">
+			{{ form_row(new_form.imageName) }}
+			{{ form_row(new_form.name) }}
+			{{ form_row(new_form.slug) }}
+			{{ form_row(new_form.createdAt) }}
 		</div>
-		<div class="row justify-content-between flex-nowrap">
-			<div class="col-md-6 border border-light shadow p-3 mb-5 bg-white rounded m-1">
-				{{ form_row(new_form.imageName) }}
-				{{ form_row(new_form.name) }}
-				{{ form_row(new_form.slug) }}
-				{{ form_row(new_form.createdAt) }}
+		<div class="col-md-6 border border-light shadow p-3 mb-5 bg-white rounded m-1 d-flex flex-column">
+			<div class="d-flex justify-content-between">
+				<div class="col-md-6">
+					{{ form_row(new_form.socGest) }}
+					{{ form_row(new_form.categorie) }}
+					{{ form_row(new_form.capital) }}
+				</div>
+				<div class="col-md-6">
+					{{ form_row(new_form.thematique) }}
+					{{ form_row(new_form.capitalisation) }}
+					{{ form_row(new_form.nbAssoc) }}
+				</div>
 			</div>
 			<div>
-				<div class="col-md-6 border border-light shadow p-3 mb-5 bg-white rounded m-1 d-flex justify-content-between">
-					<div class="col-md-6">
-						{{ form_row(new_form.socGest) }}
-						{{ form_row(new_form.categorie) }}
-						{{ form_row(new_form.capital) }}
-					</div>
-					<div class="col-md-6">
-						{{ form_row(new_form.thematique) }}
-						{{ form_row(new_form.capitalisation) }}
-						{{ form_row(new_form.nbAssoc) }}
-						{{ form_row(new_form.performances) }}
-					</div>
+				{{ form_row(new_form.performances, {'attr': {'class': 'form-inline'}}) }}
+				{# {{ dump(new_form.performances) }} #}
+			</div>
+		</div>
+	</div>
+	<div class="d-flex justify-content-between col-md-6">
+		<h2>CHIFFRES CLES</h2>
+	</div>
+	<div class="row justify-content-between flex-nowrap">
+		<div class="col-md-6 border border-light shadow p-3 mb-5 bg-white rounded m-1">
+			<div class="d-flex justify-content-between">
+				<div class="col-md-6">
+					{{ form_row(new_form.sharePrice) }}
+					{{ form_row(new_form.shareNbr) }}
+					{{ form_row(new_form.shareSubMin) }}
+				</div>
+				<div class="col-md-6">
+					{{ form_row(new_form.fruitionDelay) }}
+					{{ form_row(new_form.withdrawalValue) }}
+					{{ form_row(new_form.immvableNbr) }}
 				</div>
 			</div>
 		</div>
-		{{ form_end(new_form) }}
-	{% endblock new_form %}
-{% endblock %}
+		<div class="col-md-6 border border-light shadow p-3 mb-5 bg-white rounded m-1 d-flex flex-column">
+			<div class="d-flex justify-content-between">
+				<div class="col-md-6">
+					{{ form_row(new_form.surface) }}
+					{{ form_row(new_form.tenantNbr) }}
+					{{ form_row(new_form.top) }}
+					{{ form_row(new_form.lifeInsuranceAvaible) }}
+				</div>
+				<div class="col-md-6">
+					{{ form_row(new_form.tof) }}
+					{{ form_row(new_form.reserveRan) }}
+					{{ form_row(new_form.worksAdvance) }}
+				</div>
+			</div>
+			<div></div>
+		</div>
+	</div>
+
+	<div class="d-flex justify-content-between col-md-6">
+		<h2>STRATEGIE</h2>
+	</div>
+	<div class="row justify-content-between flex-nowrap">
+		<div class="col-md-6 border border-light shadow p-3 mb-5 bg-white rounded m-1">
+			{{ form_row(new_form.investStrat) }}
+			{{ form_row(new_form.repartSector) }}
+			{{ form_row(new_form.repartGeo) }}
+		</div>
+		<div class="col-md-6 border border-light shadow p-3 mb-5 bg-white rounded m-1 d-flex flex-column">
+			{{ form_row(new_form.infoTrim) }}
+			{{ form_row(new_form.lifeAssetTrim) }}
+		</div>
+	</div>
+
+	<div class="d-flex justify-content-between col-md-6">
+		<h2>FRAIS</h2>
+	</div>
+	<div class="row justify-content-between flex-nowrap">
+		<div class="col-md-12 border border-light shadow p-3 mb-5 bg-white rounded m-1">
+			{{ form_row(new_form.subscriptionCom) }}
+			{{ form_row(new_form.ManageCom) }}
+			{{ form_row(new_form.arbMovCom) }}
+			{{ form_row(new_form.pilotWorksCom) }}
+			{{ form_row(new_form.witCessionCom) }}
+			{{ form_row(new_form.shareMutaCom) }}
+		</div>
+	</div>
+
+	{{ form_end(new_form) }}
+{% endblock new_form %}{% endblock %}
