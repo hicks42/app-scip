@@ -89,8 +89,9 @@ class ProduitCrudController extends AbstractCrudController
                 // ->renderExpanded()
                 ->setColumns(12),
 
+            //CHIFFRES CLES
             FormField::addPanel('CHIFFRES CLES')->collapsible(),
-            MoneyField::new('sharePrice', 'Prix de la part')
+            MoneyField::new('sharePrice', 'Prix de la part en cts')
                 ->setCurrency('EUR')
                 ->hideOnIndex()
                 ->setColumns(11),
@@ -103,7 +104,8 @@ class ProduitCrudController extends AbstractCrudController
             TextField::new('fruitionDelay', 'Délai de jouissance')
                 ->hideOnIndex()
                 ->setColumns(11),
-            NumberField::new('withdrawalValue', 'Valeur de retrait')
+            MoneyField::new('withdrawalValue', 'Valeur de retrait en cts')
+                ->setCurrency('EUR')
                 ->hideOnIndex()
                 ->setColumns(11),
             NumberField::new('immvableNbr', 'Nombre d\'immeubles')
@@ -127,10 +129,12 @@ class ProduitCrudController extends AbstractCrudController
             TextField::new('reserveRan', 'Réserves et RAN')
                 ->hideOnIndex()
                 ->setColumns(11),
-            NumberField::new('worksAdvance', 'Provisions pour travaux')
+            MoneyField::new('worksAdvance', 'Provisions pour travaux en cts')
+                ->setCurrency('EUR')
                 ->hideOnIndex()
                 ->setColumns(11),
 
+            //STRATEGIE
             FormField::addPanel('STRATEGIE')->collapsible(),
             TextareaField::new('investStrat', 'Stratégie d\'investissement')
                 ->hideOnIndex()
@@ -148,6 +152,7 @@ class ProduitCrudController extends AbstractCrudController
                 ->hideOnIndex()
                 ->setColumns(12),
 
+            //FRAIS
             FormField::addPanel('FRAIS')->collapsible(),
             TextareaField::new('subscriptionCom', 'Commission de souscription')
                 ->hideOnIndex()

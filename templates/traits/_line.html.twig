@@ -1,6 +1,8 @@
+{% set currency = ['sharePrice','withdrawalValue','worksAdvance'] %}
+{% set percent = ['tof','top'] %}
 <tr>
-	<th>{{value|trans}}
-		:</th>
+	<th>{{value|trans}},
+						:</th>
 	{% if value == 'performances' %}
 		{% for item in compare %}
 			{% set perfs = attribute(item.produit, value).getValues() %}
@@ -12,7 +14,6 @@
 			{% endfor %}
 		</td>
 	{% endfor %}
-
 {% elseif value == 'lifeInsuranceAvaible' %}
 	{% for item in compare %}
 		{% set lifass = attribute(item.produit, value) %}
@@ -33,6 +34,12 @@
 			{% if value == 'capitalisation' %}
 				<td>{{ column|raw }}
 					M€</td>
+			{% elseif value in currency %}
+				<td>{{ column|number_format(2, '.', ',')}}
+					€</td>
+			{% elseif value in percent %}
+				<td>{{ column|raw }}
+					%</td>
 			{% else %}
 				<td>{{ column|raw }}</td>
 			{% endif %}

@@ -31,31 +31,37 @@ class Produit
 
   /**
    * @ORM\Column(type="string", length=255)
+   * @Assert\NotBlank(message="Un nom doit être renseigné")
    */
   private $name;
 
   /**
    * @ORM\Column(type="string", length=255)
+   * @Assert\NotBlank(message="Un nom doit être renseigné")
    */
   private $soc_gest;
 
   /**
    * @ORM\Column(type="string", length=255)
+   * @Assert\NotBlank(message="Un nom doit être renseigné")
    */
   private $capital;
 
   /**
    * @ORM\Column(type="string", length=255)
+   * @Assert\NotBlank(message="Un nom doit être renseigné")
    */
   private $thematique;
 
   /**
    * @ORM\Column(type="float", length=255)
+   * @Assert\NotBlank(message="Un nom doit être renseigné")
    */
   private $capitalisation;
 
   /**
    * @ORM\Column(type="integer")
+   * @Assert\NotBlank(message="Un nom doit être renseigné")
    */
   private $nb_assoc;
 
@@ -397,289 +403,289 @@ class Produit
 
   public function getSharePrice(): ?float
   {
-      return $this->sharePrice;
+    return $this->sharePrice;
   }
 
   public function setSharePrice(float $sharePrice): self
   {
-      $this->sharePrice = $sharePrice;
+    $this->sharePrice = $sharePrice;
 
-      return $this;
+    return $this;
   }
 
   public function getShareNbr(): ?int
   {
-      return $this->shareNbr;
+    return $this->shareNbr;
   }
 
   public function setShareNbr(int $shareNbr): self
   {
-      $this->shareNbr = $shareNbr;
+    $this->shareNbr = $shareNbr;
 
-      return $this;
+    return $this;
   }
 
   public function getShareSubMin(): ?int
   {
-      return $this->shareSubMin;
+    return $this->shareSubMin;
   }
 
   public function setShareSubMin(int $shareSubMin): self
   {
-      $this->shareSubMin = $shareSubMin;
+    $this->shareSubMin = $shareSubMin;
 
-      return $this;
+    return $this;
   }
 
   public function getFruitionDelay(): ?string
   {
-      return $this->fruitionDelay;
+    return $this->fruitionDelay;
   }
 
   public function setFruitionDelay(string $fruitionDelay): self
   {
-      $this->fruitionDelay = $fruitionDelay;
+    $this->fruitionDelay = $fruitionDelay;
 
-      return $this;
+    return $this;
   }
 
   public function getWithdrawalValue(): ?float
   {
-      return $this->withdrawalValue;
+    return $this->withdrawalValue;
   }
 
   public function setWithdrawalValue(float $withdrawalValue): self
   {
-      $this->withdrawalValue = $withdrawalValue;
+    $this->withdrawalValue = $withdrawalValue;
 
-      return $this;
+    return $this;
   }
 
   public function getImmvableNbr(): ?int
   {
-      return $this->immvableNbr;
+    return $this->immvableNbr;
   }
 
   public function setImmvableNbr(int $immvableNbr): self
   {
-      $this->immvableNbr = $immvableNbr;
+    $this->immvableNbr = $immvableNbr;
 
-      return $this;
+    return $this;
   }
 
   public function getSurface(): ?int
   {
-      return $this->surface;
+    return $this->surface;
   }
 
   public function setSurface(int $surface): self
   {
-      $this->surface = $surface;
+    $this->surface = $surface;
 
-      return $this;
+    return $this;
   }
 
   public function getTenantNbr(): ?int
   {
-      return $this->tenantNbr;
+    return $this->tenantNbr;
   }
 
   public function setTenantNbr(int $tenantNbr): self
   {
-      $this->tenantNbr = $tenantNbr;
+    $this->tenantNbr = $tenantNbr;
 
-      return $this;
+    return $this;
   }
 
   public function getTop(): ?int
   {
-      return $this->top;
+    return $this->top;
   }
 
   public function setTop(int $top): self
   {
-      $this->top = $top;
+    $this->top = $top;
 
-      return $this;
+    return $this;
   }
 
   public function getTof(): ?int
   {
-      return $this->tof;
+    return $this->tof;
   }
 
   public function setTof(int $tof): self
   {
-      $this->tof = $tof;
+    $this->tof = $tof;
 
-      return $this;
+    return $this;
   }
 
   public function getLifeInsuranceAvaible(): ?bool
   {
-      return $this->lifeInsuranceAvaible;
+    return $this->lifeInsuranceAvaible;
   }
 
   public function setLifeInsuranceAvaible(bool $lifeInsuranceAvaible): self
   {
-      $this->lifeInsuranceAvaible = $lifeInsuranceAvaible;
+    $this->lifeInsuranceAvaible = $lifeInsuranceAvaible;
 
-      return $this;
+    return $this;
   }
 
   public function getReserveRan(): ?string
   {
-      return $this->reserveRan;
+    return $this->reserveRan;
   }
 
   public function setReserveRan(string $reserveRan): self
   {
-      $this->reserveRan = $reserveRan;
+    $this->reserveRan = $reserveRan;
 
-      return $this;
+    return $this;
   }
 
   public function getWorksAdvance(): ?int
   {
-      return $this->worksAdvance;
+    return $this->worksAdvance;
   }
 
   public function setWorksAdvance(int $worksAdvance): self
   {
-      $this->worksAdvance = $worksAdvance;
+    $this->worksAdvance = $worksAdvance;
 
-      return $this;
+    return $this;
   }
 
   public function getInvestStrat(): ?string
   {
-      return $this->investStrat;
+    return $this->investStrat;
   }
 
   public function setInvestStrat(string $investStrat): self
   {
-      $this->investStrat = $investStrat;
+    $this->investStrat = $investStrat;
 
-      return $this;
+    return $this;
   }
 
   public function getRepartSector(): ?string
   {
-      return $this->repartSector;
+    return $this->repartSector;
   }
 
   public function setRepartSector(string $repartSector): self
   {
-      $this->repartSector = $repartSector;
+    $this->repartSector = $repartSector;
 
-      return $this;
+    return $this;
   }
 
   public function getRepartGeo(): ?string
   {
-      return $this->repartGeo;
+    return $this->repartGeo;
   }
 
   public function setRepartGeo(string $repartGeo): self
   {
-      $this->repartGeo = $repartGeo;
+    $this->repartGeo = $repartGeo;
 
-      return $this;
+    return $this;
   }
 
   public function getInfoTrim(): ?string
   {
-      return $this->infoTrim;
+    return $this->infoTrim;
   }
 
   public function setInfoTrim(string $infoTrim): self
   {
-      $this->infoTrim = $infoTrim;
+    $this->infoTrim = $infoTrim;
 
-      return $this;
+    return $this;
   }
 
   public function getLifeAssetTrim(): ?string
   {
-      return $this->lifeAssetTrim;
+    return $this->lifeAssetTrim;
   }
 
   public function setLifeAssetTrim(string $lifeAssetTrim): self
   {
-      $this->lifeAssetTrim = $lifeAssetTrim;
+    $this->lifeAssetTrim = $lifeAssetTrim;
 
-      return $this;
+    return $this;
   }
 
   public function getSubscriptionCom(): ?string
   {
-      return $this->subscriptionCom;
+    return $this->subscriptionCom;
   }
 
   public function setSubscriptionCom(string $subscriptionCom): self
   {
-      $this->subscriptionCom = $subscriptionCom;
+    $this->subscriptionCom = $subscriptionCom;
 
-      return $this;
+    return $this;
   }
 
   public function getManageCom(): ?string
   {
-      return $this->ManageCom;
+    return $this->ManageCom;
   }
 
   public function setManageCom(string $ManageCom): self
   {
-      $this->ManageCom = $ManageCom;
+    $this->ManageCom = $ManageCom;
 
-      return $this;
+    return $this;
   }
 
   public function getArbMovCom(): ?string
   {
-      return $this->arbMovCom;
+    return $this->arbMovCom;
   }
 
   public function setArbMovCom(string $arbMovCom): self
   {
-      $this->arbMovCom = $arbMovCom;
+    $this->arbMovCom = $arbMovCom;
 
-      return $this;
+    return $this;
   }
 
   public function getPilotWorksCom(): ?string
   {
-      return $this->pilotWorksCom;
+    return $this->pilotWorksCom;
   }
 
   public function setPilotWorksCom(string $pilotWorksCom): self
   {
-      $this->pilotWorksCom = $pilotWorksCom;
+    $this->pilotWorksCom = $pilotWorksCom;
 
-      return $this;
+    return $this;
   }
 
   public function getWitCessionCom(): ?string
   {
-      return $this->witCessionCom;
+    return $this->witCessionCom;
   }
 
   public function setWitCessionCom(string $witCessionCom): self
   {
-      $this->witCessionCom = $witCessionCom;
+    $this->witCessionCom = $witCessionCom;
 
-      return $this;
+    return $this;
   }
 
   public function getShareMutaCom(): ?string
   {
-      return $this->shareMutaCom;
+    return $this->shareMutaCom;
   }
 
   public function setShareMutaCom(string $shareMutaCom): self
   {
-      $this->shareMutaCom = $shareMutaCom;
+    $this->shareMutaCom = $shareMutaCom;
 
-      return $this;
+    return $this;
   }
 }
