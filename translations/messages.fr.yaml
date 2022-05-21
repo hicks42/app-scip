@@ -1,5 +1,5 @@
 name: Nom du produit
-SocGest: Société de gestion
+socGest: Société de gestion
 categorie: Catégorie
 capital: Type de capital
 thematique: Thématique
@@ -24,14 +24,18 @@ reserveRan: Réserves et RAN
 worksAdvance: Provisions pour travaux
 
 investStrat: Stratégie d'investissement
-repartSector: Répartition sectorielle
-repartGeo: Répartition géographique
+repartSectors: Répartition sectorielle
+sectorName: Nom du secteur
+sectorValue: Valeur en %
+repartGeos: Répartition géographique
+geoName: Zone géographique
+geoValue: Valeur en %
 infoTrim: Informations pertinentes du trimestre
 lifeAssetTrim: Vie des actifs au cours du trimestre
 
 subscriptionCom: Commission de souscription
-ManageCom: Commission de gestion
+manageCom: Commission de gestion
 arbMovCom: Commission d'arbitrage ou de mouvement
 pilotWorksCom: Commission de suivi de pilotage des travaux
-witCessionCom: Commission de retrait/cession sur le marché secondaire
+witCessionCom: Commission de retrait / cession sur le marché secondaire
 shareMutaCom: Commission de cession ou de mutation des parts

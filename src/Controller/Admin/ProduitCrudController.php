@@ -4,7 +4,8 @@ namespace App\Controller\Admin;
 
 use App\Entity\Produit;
 use App\Form\PerformanceType;
-use phpDocumentor\Reflection\Types\Boolean;
+use App\Form\RepartGeoType;
+use App\Form\RepartSectorType;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
@@ -15,6 +16,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
@@ -23,7 +25,6 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 
 class ProduitCrudController extends AbstractCrudController
 {
@@ -86,7 +87,6 @@ class ProduitCrudController extends AbstractCrudController
                 // ->setTemplatePath('admin/fields/performance.html.twig')
                 ->hideOnIndex()
                 ->onlyOnDetail()
-                // ->renderExpanded()
                 ->setColumns(12),
 
             //CHIFFRES CLES
@@ -117,10 +117,10 @@ class ProduitCrudController extends AbstractCrudController
             NumberField::new('tenantNbr', 'Nombre de locataires')
                 ->hideOnIndex()
                 ->setColumns(11),
-            NumberField::new('top', 'TOP')
+            NumberField::new('top', 'TOP en %')
                 ->hideOnIndex()
                 ->setColumns(11),
-            NumberField::new('tof', 'TOF')
+            NumberField::new('tof', 'TOF en %')
                 ->hideOnIndex()
                 ->setColumns(11),
             BooleanField::new('lifeInsuranceAvaible', 'Disponibilité en assurance-vie')
@@ -139,12 +139,29 @@ class ProduitCrudController extends AbstractCrudController
             TextareaField::new('investStrat', 'Stratégie d\'investissement')
                 ->hideOnIndex()
                 ->setColumns(12),
-            TextField::new('repartSector', 'Répartition sectorielle')
-                ->hideOnIndex()
+
+            CollectionField::new('repartSectors', 'Répartition sectorielle')
+                ->setEntryType(RepartSectorType::class)
+                ->setFormTypeOption('by_reference', false)
+                ->onlyOnForms()
+                ->renderExpanded()
                 ->setColumns(12),
-            TextField::new('repartGeo', 'Répartition géographique')
+            CollectionField::new('repartSectors', 'Répartition sectorielle')
                 ->hideOnIndex()
+                ->onlyOnDetail()
                 ->setColumns(12),
+
+            CollectionField::new('repartGeos', 'Répartition géographique')
+                ->setEntryType(RepartGeoType::class)
+                ->setFormTypeOption('by_reference', false)
+                ->onlyOnForms()
+                ->renderExpanded()
+                ->setColumns(12),
+            CollectionField::new('repartGeos', 'Répartition géographique')
+                ->hideOnIndex()
+                ->onlyOnDetail()
+                ->setColumns(12),
+
             TextareaField::new('infoTrim', 'Informations pertinentes du trimestre')
                 ->hideOnIndex()
                 ->setColumns(12),
@@ -190,12 +207,13 @@ class ProduitCrudController extends AbstractCrudController
             ]);
     }
 
-    // public function configureAssets(Assets $assets): Assets
-    // {
-    //     return $assets
+    public function configureAssets(Assets $assets): Assets
+    {
+        return $assets
 
-    //         ->addJsFile('ea_collection.js');
-    // }
+            // ->addJsFile('ea_collection.js');
+            ->addCssFile('css/admin.css');
+    }
 
     public function configureActions(Actions $actions): Actions
     {

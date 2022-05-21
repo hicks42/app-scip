@@ -79,7 +79,6 @@
 			</div>
 			<div>
 				{{ form_row(new_form.performances, {'attr': {'class': 'form-inline'}}) }}
-				{# {{ dump(new_form.performances) }} #}
 			</div>
 		</div>
 	</div>
@@ -125,8 +124,8 @@
 	<div class="row justify-content-between flex-nowrap">
 		<div class="col-md-6 border border-light shadow p-3 mb-5 bg-white rounded m-1">
 			{{ form_row(new_form.investStrat) }}
-			{{ form_row(new_form.repartSector) }}
-			{{ form_row(new_form.repartGeo) }}
+			{{ form_row(new_form.repartSectors) }}
+			{{ form_row(new_form.repartGeos) }}
 		</div>
 		<div class="col-md-6 border border-light shadow p-3 mb-5 bg-white rounded m-1 d-flex flex-column">
 			{{ form_row(new_form.infoTrim) }}

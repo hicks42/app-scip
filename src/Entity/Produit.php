@@ -172,16 +172,6 @@ class Produit
   private $investStrat;
 
   /**
-   * @ORM\Column(type="string", length=255)
-   */
-  private $repartSector;
-
-  /**
-   * @ORM\Column(type="string", length=255)
-   */
-  private $repartGeo;
-
-  /**
    * @ORM\Column(type="text")
    */
   private $infoTrim;
@@ -221,6 +211,17 @@ class Produit
    */
   private $shareMutaCom;
 
+  /**
+   * @ORM\OneToMany(targetEntity=RepartSector::class, mappedBy="produit", orphanRemoval=true, cascade={"persist"})
+   * @var Collection
+   */
+  private $repartSectors;
+
+  /**
+   * @ORM\OneToMany(targetEntity=RepartGeo::class, mappedBy="produit", orphanRemoval=true, cascade={"persist"})
+   * @var Collection
+   */
+  private $repartGeos;
 
   public function __toString()
   {
@@ -230,6 +231,8 @@ class Produit
   public function __construct()
   {
     $this->performances = new ArrayCollection();
+    $this->repartSectors = new ArrayCollection();
+    $this->repartGeos = new ArrayCollection();
   }
 
   public function getId(): ?int
@@ -569,30 +572,6 @@ class Produit
     return $this;
   }
 
-  public function getRepartSector(): ?string
-  {
-    return $this->repartSector;
-  }
-
-  public function setRepartSector(string $repartSector): self
-  {
-    $this->repartSector = $repartSector;
-
-    return $this;
-  }
-
-  public function getRepartGeo(): ?string
-  {
-    return $this->repartGeo;
-  }
-
-  public function setRepartGeo(string $repartGeo): self
-  {
-    $this->repartGeo = $repartGeo;
-
-    return $this;
-  }
-
   public function getInfoTrim(): ?string
   {
     return $this->infoTrim;
@@ -685,6 +664,66 @@ class Produit
   public function setShareMutaCom(string $shareMutaCom): self
   {
     $this->shareMutaCom = $shareMutaCom;
+
+    return $this;
+  }
+
+  /**
+   * @return Collection|RepartSector[]
+   */
+  public function getRepartSectors(): Collection
+  {
+    return $this->repartSectors;
+  }
+
+  public function addRepartSector(RepartSector $repartSector): self
+  {
+    if (!$this->repartSectors->contains($repartSector)) {
+      $this->repartSectors[] = $repartSector;
+      $repartSector->setProduit($this);
+    }
+
+    return $this;
+  }
+
+  public function removeRepartSector(RepartSector $repartSector): self
+  {
+    if ($this->repartSectors->removeElement($repartSector)) {
+      // set the owning side to null (unless already changed)
+      if ($repartSector->getProduit() === $this) {
+        $repartSector->setProduit(null);
+      }
+    }
+
+    return $this;
+  }
+
+  /**
+   * @return Collection|RepartGeo[]
+   */
+  public function getRepartGeos(): Collection
+  {
+    return $this->repartGeos;
+  }
+
+  public function addRepartGeo(RepartGeo $repartGeo): self
+  {
+    if (!$this->repartGeos->contains($repartGeo)) {
+      $this->repartGeos[] = $repartGeo;
+      $repartGeo->setProduit($this);
+    }
+
+    return $this;
+  }
+
+  public function removeRepartGeo(RepartGeo $repartGeo): self
+  {
+    if ($this->repartGeos->removeElement($repartGeo)) {
+      // set the owning side to null (unless already changed)
+      if ($repartGeo->getProduit() === $this) {
+        $repartGeo->setProduit(null);
+      }
+    }
 
     return $this;
   }

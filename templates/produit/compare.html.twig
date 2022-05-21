@@ -10,7 +10,6 @@
 
 {% block javascripts %}
 	{{ parent() }}
-	<script src="http://localhost:8080/wip.js"></script>
 {% endblock javascripts %}
 
 {% block content %}
@@ -56,4 +55,5 @@
 			</p>
 		</div>
 	</div>
+	{{ encore_entry_script_tags('donut') }}
 {% endblock content %}

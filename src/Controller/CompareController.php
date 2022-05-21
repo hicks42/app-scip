@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Classe\Compare;
 use App\Entity\Produit;
-use App\Service\NameFormater;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -23,8 +22,9 @@ class CompareController extends AbstractController
   /**
    * @Route("/comparator/{str}", name="compare_array", methods="GET")
    */
-  public function view($str, NameFormater $nameFormat)
+  public function view($str)
   {
+    // gathering all the fields direct and associated
     $directfields = $this->em->getClassMetadata(Produit::class)->getFieldNames();
     array_shift($directfields);
     array_splice($directfields, -2);
@@ -35,19 +35,19 @@ class CompareController extends AbstractController
     foreach ($allfields as $field) {
       $fieldnames[] = $this->snakeToCamel($field);
     }
-
-    $olCatKey = array_search('categorie', $allfields);
+    // moving associated fields
+    $oldCatKey = array_search('categorie', $allfields);
     $newCatKey = array_search('soc_gest', $allfields) + 1;
-    $this->moveElement($fieldnames, $olCatKey, $newCatKey);
+    $this->moveElement($fieldnames, $oldCatKey, $newCatKey);
 
-    $olPerfdKey = array_search('performances', $allfields);
+    $oldPerfdKey = array_search('performances', $allfields);
     $newPerfKey = array_search('nb_assoc', $allfields) + 1;
-    $this->moveElement($fieldnames, $olPerfdKey, $newPerfKey);
+    $this->moveElement($fieldnames, $oldPerfdKey, $newPerfKey);
 
     if (!is_null($str)) {
       $compareDetail = [];
-      $produitsIds = explode(',', $str);
       // les compare de la session sont captés par l'ID et stocké ds compareDetail[]
+      $produitsIds = explode(',', $str);
       foreach ($produitsIds as $id) {
         $compareDetail[] = [
           'produit' => $this->em->getRepository(Produit::class)->findOneById($id),
@@ -56,6 +56,7 @@ class CompareController extends AbstractController
     } else {
       $compareDetail = null;
     }
+
     return $this->render('produit/compare.html.twig', [
       'compare' => $compareDetail,
       'fieldnames' => $fieldnames,
@@ -105,6 +106,8 @@ class CompareController extends AbstractController
     return $this->redirectToRoute('produits');
   }
 
+
+  // les fonctions pour formate et bouger les fields
   private function moveElement(&$array, $a, $b)
   {
     $out = array_splice($array, $a, 1);
