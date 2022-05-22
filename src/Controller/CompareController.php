@@ -44,6 +44,15 @@ class CompareController extends AbstractController
     $newPerfKey = array_search('nb_assoc', $allfields) + 1;
     $this->moveElement($fieldnames, $oldPerfdKey, $newPerfKey);
 
+    $oldPerfdKey = array_search('repartSectors', $allfields);
+    $newPerfKey = array_search('infoTrim', $allfields) + 2;
+    $this->moveElement($fieldnames, $oldPerfdKey, $newPerfKey);
+
+    $oldPerfdKey = array_search('repartGeos', $allfields);
+    $newPerfKey = array_search('lifeAssetTrim', $allfields) + 2;
+    $this->moveElement($fieldnames, $oldPerfdKey, $newPerfKey);
+
+
     if (!is_null($str)) {
       $compareDetail = [];
       // les compare de la session sont captés par l'ID et stocké ds compareDetail[]

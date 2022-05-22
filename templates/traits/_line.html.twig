@@ -61,15 +61,18 @@
 		{% for column in attribute(produit, value)|split('<hr />') %}
 			{% if value == 'capitalisation' %}
 				<td>{{ column|raw }}
-					M€</td>
+					Milliards €</td>
 			{% elseif value in currency %}
-				<td>{{ column|number_format(2, '.', ',')}}
+				<td>{{ (column / 100)|number_format(2, '.', ',')}}
 					€</td>
 			{% elseif value in percent %}
 				<td>{{ column|raw }}
 					%</td>
 			{% else %}
-				<td>{{ column|raw }}</td>
+				<td>
+					<p style="text-align: justify;">
+						{{ column|raw }}</p>
+				</td>
 			{% endif %}
 		{% endfor %}
 	{% endfor %}
