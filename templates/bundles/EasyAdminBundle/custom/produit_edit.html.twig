@@ -54,42 +54,112 @@
 			<h1>
 		{{ edit_form.vars.value.name }}
 		</h1>
-		{{ form_start(edit_form) }}
+			<div>
+			{{ form_start(edit_form) }}
 		{{ form_row(edit_form.isPromo) }}
-		<hr>
-			<div class="d-flex justify-content-between col-md-6"> <h2>IDENTITE
-			</h2>
-		</div>
-		<div class="row justify-content-between flex-nowrap">
-			<div class="col-md-6 border border-light shadow p-3 mb-5 bg-white rounded m-1">
-				{{ form_row(edit_form.imageName) }}
-				{{ form_row(edit_form.name) }}
-				{{ form_row(edit_form.slug) }}
-				{{ form_row(edit_form.createdAt) }}
-			</div>
-			<div class="col-md-6 border border-light shadow p-3 mb-5 bg-white rounded m-1 d-flex flex-column">
-				<div class="d-flex justify-content-between">
-					<div class="col-md-6">
-						{{ form_row(edit_form.socGest) }}
-						{{ form_row(edit_form.categorie) }}
-						{{ form_row(edit_form.capital) }}
-					</div>
-					<div class="col-md-6">
-						{{ form_row(edit_form.thematique) }}
-						{{ form_row(edit_form.capitalisation) }}
-						{{ form_row(edit_form.nbAssoc) }}
-					</div>
-				</div>
-				<div>
-					{{ form_row(edit_form.performances, {'attr': {'class': 'form-inline'}}) }}
-					{# {{ dump(edit_form.performances) }} #}
-				</div>
-			</div>
-		</div>
-		{{ form_end(edit_form) }}
-	{% endblock edit_form %}
+	</div>
+	</hr>
 
-	{% block delete_form %}
-		{{ include('@EasyAdmin/crud/includes/_delete_form.html.twig', { entity_id: entity.primaryKeyValue }, with_context = false) }}
-	{% endblock delete_form %}
-{% endblock main %}
+		<div class="d-flex justify-content-between col-md-6"> <h2>IDENTITE</h2>
+	</div>
+	<div class="row justify-content-between flex-nowrap">
+		<div class="col-md-6 border border-light shadow p-3 mb-5 bg-white rounded m-1">
+			{{ form_row(edit_form.imageName) }}
+			{{ form_row(edit_form.name) }}
+			{{ form_row(edit_form.slug) }}
+			{{ form_row(edit_form.createdAt) }}
+		</div>
+		<div class="col-md-6 border border-light shadow p-3 mb-5 bg-white rounded m-1 d-flex flex-column">
+			<div class="d-flex justify-content-between">
+				<div class="col-md-6">
+					{{ form_row(edit_form.socGest) }}
+					{{ form_row(edit_form.categorie) }}
+					{{ form_row(edit_form.capital) }}
+				</div>
+				<div class="col-md-6">
+					{{ form_row(edit_form.thematique) }}
+					{{ form_row(edit_form.capitalisation) }}
+					{{ form_row(edit_form.nbAssoc) }}
+				</div>
+			</div>
+			<div>
+				{{ form_row(edit_form.performances, {'attr': {'class': 'form-inline'}}) }}
+			</div>
+		</div>
+	</div>
+	<div class="d-flex justify-content-between col-md-6">
+		<h2>CHIFFRES CLES</h2>
+	</div>
+	<div class="row justify-content-between flex-nowrap">
+		<div class="col-md-6 border border-light shadow p-3 mb-5 bg-white rounded m-1">
+			<div class="d-flex justify-content-between">
+				<div class="col-md-6">
+					{{ form_row(edit_form.sharePrice) }}
+					{{ form_row(edit_form.shareNbr) }}
+					{{ form_row(edit_form.shareSubMin) }}
+				</div>
+				<div class="col-md-6">
+					{{ form_row(edit_form.fruitionDelay) }}
+					{{ form_row(edit_form.withdrawalValue) }}
+					{{ form_row(edit_form.immvableNbr) }}
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6 border border-light shadow p-3 mb-5 bg-white rounded m-1 d-flex flex-column">
+			<div class="d-flex justify-content-between">
+				<div class="col-md-6">
+					{{ form_row(edit_form.surface) }}
+					{{ form_row(edit_form.tenantNbr) }}
+					{{ form_row(edit_form.top) }}
+					{{ form_row(edit_form.lifeInsuranceAvaible) }}
+				</div>
+				<div class="col-md-6">
+					{{ form_row(edit_form.tof) }}
+					{{ form_row(edit_form.reserveRan) }}
+					{{ form_row(edit_form.worksAdvance) }}
+				</div>
+			</div>
+			<div></div>
+		</div>
+	</div>
+
+	<div class="d-flex justify-content-between col-md-6">
+		<h2>STRATEGIE</h2>
+	</div>
+	<div class="row justify-content-between flex-nowrap">
+		<div class="col-md-6 border border-light shadow p-3 mb-5 bg-white rounded m-1">
+			{{ form_row(edit_form.investStrat) }}
+			{{ form_row(edit_form.infoTrim) }}
+			{{ form_row(edit_form.lifeAssetTrim) }}
+		</div>
+		<div class="col-md-6 border border-light shadow p-3 mb-5 bg-white rounded m-1 d-flex flex-column">
+			<div>
+				{{ form_row(edit_form.repartSectors, {'attr': {'class': 'form-inline'}}) }}
+			</div>
+			<hr>
+			<div>
+				{{ form_row(edit_form.repartGeos, {'attr': {'class': 'form-inline'}}) }}
+			</div>
+		</div>
+	</div>
+
+	<div class="d-flex justify-content-between col-md-6">
+		<h2>FRAIS</h2>
+	</div>
+	<div class="row justify-content-between flex-nowrap">
+		<div class="col-md-12 border border-light shadow p-3 mb-5 bg-white rounded m-1">
+			{{ form_row(edit_form.subscriptionCom) }}
+			{{ form_row(edit_form.ManageCom) }}
+			{{ form_row(edit_form.arbMovCom) }}
+			{{ form_row(edit_form.pilotWorksCom) }}
+			{{ form_row(edit_form.witCessionCom) }}
+			{{ form_row(edit_form.shareMutaCom) }}
+		</div>
+	</div>
+
+	{{ form_end(edit_form) }}
+{% endblock edit_form %}
+
+{% block delete_form %}
+	{{ include('@EasyAdmin/crud/includes/_delete_form.html.twig', { entity_id: entity.primaryKeyValue }, with_context = false) }}
+{% endblock delete_form %}{% endblock main %}
