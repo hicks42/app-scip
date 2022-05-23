@@ -31,37 +31,31 @@ class Produit
 
   /**
    * @ORM\Column(type="string", length=255)
-   * @Assert\NotBlank(message="Un nom doit être renseigné")
    */
   private $name;
 
   /**
    * @ORM\Column(type="string", length=255)
-   * @Assert\NotBlank(message="Un nom doit être renseigné")
    */
   private $soc_gest;
 
   /**
    * @ORM\Column(type="string", length=255)
-   * @Assert\NotBlank(message="Un nom doit être renseigné")
    */
   private $capital;
 
   /**
    * @ORM\Column(type="string", length=255)
-   * @Assert\NotBlank(message="Un nom doit être renseigné")
    */
   private $thematique;
 
   /**
    * @ORM\Column(type="float", length=255)
-   * @Assert\NotBlank(message="Un nom doit être renseigné")
    */
   private $capitalisation;
 
   /**
    * @ORM\Column(type="integer")
-   * @Assert\NotBlank(message="Un nom doit être renseigné")
    */
   private $nb_assoc;
 

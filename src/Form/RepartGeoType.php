@@ -15,10 +15,22 @@ class RepartGeoType extends AbstractType
     {
         $builder
             ->add('geoName', TextType::class, [
-                'label' => 'Nom du secteur'
+                'label' => 'Nom du secteur',
+                'row_attr' => [
+                    'class' => 'inline'
+                ],
+                'attr' => [
+                    'class' => 'repart-input'
+                ]
             ])
             ->add('geoValue', NumberType::class, [
-                'label' => 'Valeur en %'
+                'label' => 'Valeur en %',
+                'row_attr' => [
+                    'class' => 'inline'
+                ],
+                'attr' => [
+                    'class' => 'repart-input'
+                ]
             ]);
     }
 

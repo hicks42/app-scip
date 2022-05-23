@@ -3,9 +3,10 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Produit;
-use App\Form\PerformanceType;
 use App\Form\RepartGeoType;
+use App\Form\PerformanceType;
 use App\Form\RepartSectorType;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
@@ -21,8 +22,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
@@ -79,12 +80,12 @@ class ProduitCrudController extends AbstractCrudController
             CollectionField::new('performances', 'Performances')
                 ->setEntryType(PerformanceType::class)
                 ->setFormTypeOption('by_reference', false)
-                // ->setTemplatePath('admin/fields/performance.html.twig')
+                ->setTemplatePath('/bundles/EasyAdminBundle/custom/performance.html.twig')
                 ->onlyOnForms()
                 ->renderExpanded()
                 ->setColumns(12),
             CollectionField::new('performances', 'Performances')
-                // ->setTemplatePath('admin/fields/performance.html.twig')
+                // ->setTemplatePath('/bundles/EasyAdminBundle/custom/performance.html.twig')
                 ->hideOnIndex()
                 ->onlyOnDetail()
                 ->setColumns(12),
@@ -136,7 +137,8 @@ class ProduitCrudController extends AbstractCrudController
 
             //STRATEGIE
             FormField::addPanel('STRATEGIE')->collapsible(),
-            TextareaField::new('investStrat', 'Stratégie d\'investissement')
+            TextEditorField::new('investStrat', 'Stratégie d\'investissement')
+                ->setFormType(CKEditorType::class)
                 ->hideOnIndex()
                 ->setColumns(12),
 
@@ -162,56 +164,65 @@ class ProduitCrudController extends AbstractCrudController
                 ->onlyOnDetail()
                 ->setColumns(12),
 
-            TextareaField::new('infoTrim', 'Informations pertinentes du trimestre')
+            TextEditorField::new('infoTrim', 'Informations pertinentes du trimestre')
+                ->setFormType(CKEditorType::class)
                 ->hideOnIndex()
                 ->setColumns(12),
-            TextareaField::new('lifeAssetTrim', 'Vie des actifs au cours du trimestre')
+            TextEditorField::new('lifeAssetTrim', 'Vie des actifs au cours du trimestre')
+                ->setFormType(CKEditorType::class)
                 ->hideOnIndex()
                 ->setColumns(12),
 
             //FRAIS
             FormField::addPanel('FRAIS')->collapsible(),
-            TextareaField::new('subscriptionCom', 'Commission de souscription')
+            TextEditorField::new('subscriptionCom', 'Commission de souscription')
+                ->setFormType(CKEditorType::class)
                 ->hideOnIndex()
                 ->setColumns(12),
-            TextareaField::new('ManageCom', 'Commission de gestion')
+            TextEditorField::new('ManageCom', 'Commission de gestion')
+                ->setFormType(CKEditorType::class)
                 ->hideOnIndex()
                 ->setColumns(12),
-            TextareaField::new('arbMovCom', 'Commission d\'arbitrage ou de mouvement')
+            TextEditorField::new('arbMovCom', 'Commission d\'arbitrage ou de mouvement')
+                ->setFormType(CKEditorType::class)
                 ->hideOnIndex()
                 ->setColumns(12),
-            TextareaField::new('pilotWorksCom', 'Commission de suivi de pilotage des travaux')
+            TextEditorField::new('pilotWorksCom', 'Commission de suivi de pilotage des travaux')
+                ->setFormType(CKEditorType::class)
                 ->hideOnIndex()
                 ->setColumns(12),
-            TextareaField::new('witCessionCom', 'Commission de retrait/cession sur le marché secondaire')
+            TextEditorField::new('witCessionCom', 'Commission de retrait/cession sur le marché secondaire')
+                ->setFormType(CKEditorType::class)
                 ->hideOnIndex()
                 ->setColumns(12),
-            TextareaField::new('shareMutaCom', 'Commission de cession ou de mutation des parts')
+            TextEditorField::new('shareMutaCom', 'Commission de cession ou de mutation des parts')
+                ->setFormType(CKEditorType::class)
                 ->hideOnIndex()
                 ->setColumns(12),
         ];
     }
 
-
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
+            ->addFormTheme('@FOSCKEditor/Form/ckeditor_widget.html.twig')
             ->overrideTemplate('crud/new', '/bundles/EasyAdminBundle/custom/produit_new.html.twig')
             ->overrideTemplate('crud/edit', '/bundles/EasyAdminBundle/custom/produit_edit.html.twig')
             ->setDefaultSort(['id' => 'DESC'])
             ->showEntityActionsInlined()
             ->setPaginatorPageSize(10)
             ->renderContentMaximized()
-            ->overrideTemplates([
-                'crud/field/collection' => 'admin/fields/performance.html.twig',
-            ]);
+            // ->overrideTemplates([
+            //     'crud/field/collection' => '/bundles/EasyAdminBundle/custom/performance.html.twig',
+            // ])
+        ;
     }
 
     public function configureAssets(Assets $assets): Assets
     {
         return $assets
 
-            // ->addJsFile('ea_collection.js');
+            ->addJsFile('ea_collection.js')
             ->addCssFile('css/admin.css');
     }
 

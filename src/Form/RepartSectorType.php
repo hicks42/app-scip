@@ -15,10 +15,22 @@ class RepartSectorType extends AbstractType
     {
         $builder
             ->add('sectorName', TextType::class, [
-                'label' => 'Nom du secteur'
+                'label' => 'Nom du secteur',
+                'row_attr' => [
+                    'class' => 'inline'
+                ],
+                'attr' => [
+                    'class' => 'repart-input'
+                ]
             ])
             ->add('sectorValue', NumberType::class, [
-                'label' => 'Valeur en %'
+                'label' => 'Valeur en %',
+                'row_attr' => [
+                    'class' => 'inline'
+                ],
+                'attr' => [
+                    'class' => 'repart-input'
+                ]
             ]);
     }
 

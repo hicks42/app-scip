@@ -21,16 +21,16 @@ class PerformanceType extends AbstractType
                     'class' => 'inline'
                 ],
                 'attr' => [
-                    'class' => 'form-control mx-0'
+                    'class' => 'perf-input'
                 ]
             ])
             ->add('rate', NumberType::class, [
-                'label' => 'Perf.',
+                'label' => ' : ',
                 'row_attr' => [
                     'class' => 'inline'
                 ],
                 'attr' => [
-                    'class' => 'form-control mx-0'
+                    'class' => 'perf-input'
                 ]
             ]);
     }
