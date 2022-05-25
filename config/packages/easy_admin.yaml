@@ -1,10 +1,12 @@
 easy_admin:
+    design:
+        form_theme:
+            - "@EasyAdmin/form/bootstrap_4.html.twig"
+            - "@FOSCKEditor/Form/ckeditor_widget.html.twig"
+
     entities:
         Produit:
             class: App\Entity\Produit
-            form:
-                fields:
-                - { property: 'description', type: 'FOS\CKEditorBundle\Form\Type\CKEditorType' }
             label: 'Produits'
             list:
                 title: "Les plus récents de nos produits"

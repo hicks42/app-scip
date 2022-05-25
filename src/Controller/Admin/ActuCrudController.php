@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Actu;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
@@ -39,7 +40,7 @@ class ActuCrudController extends AbstractCrudController
                 ->onlyOnForms()
                 ->setColumns(6),
             TextEditorField::new('content', 'Contenu')
-                // ->setFormType(CKEditorType::class)
+                ->setFormType(CKEditorType::class)
                 ->setColumns(12),
         ];
     }

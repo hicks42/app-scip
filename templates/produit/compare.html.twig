@@ -25,10 +25,10 @@
 			{% else %}
 				<table class="table">
 					<tr class="bg-secondary bg-gradient text-white">
-						<th width="25%">IDENTITE</th>
+						<th width="15%">IDENTITE</th>
 						{% for item in compare %}
 							{% for column in item.produit.imageName|split('<hr />') %}
-								<td width="25%"><img src="{{ (column ? vich_uploader_asset(item.produit) : asset('build/images/placeholder.jpg')) | imagine_filter('square_thumbnail_htiny') }}" class="border border-white border-2 ml-2 bg-white"></td>
+								<td width="32%"><img src="{{ (column ? vich_uploader_asset(item.produit) : asset('build/images/placeholder.jpg')) | imagine_filter('square_thumbnail_htiny') }}" class="border border-white border-2 ml-2 bg-white"></td>
 							{% endfor %}
 						{% endfor %}
 					</tr>
